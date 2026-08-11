@@ -1,0 +1,69 @@
+name: Refresh GitHub contributions
+
+on:
+  schedule:
+    - cron: "17 2 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out the site
+        uses: actions/checkout@v4
+
+      - name: Fetch contribution calendar
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh api graphql -f query='query { user(login: "Gao-Chenkai") { contributionsCollection { contributionCalendar { totalContributions months { name year firstDay totalWeeks } weeks { firstDay contributionDays { color contributionCount date weekday } } } totalCommitContributions totalIssueContributions totalPullRequestContributions totalPullRequestReviewContributions totalRepositoriesWithContributedCommits totalRepositoriesWithContributedIssues totalRepositoriesWithContributedPullRequests totalRepositoryContributions commitContributionsByRepository(maxRepositories: 6) { repository { nameWithOwner url } contributions { totalCount } } } } }' --jq '.data.user.contributionsCollection' > /tmp/github-contributions.json
+
+          node <<'NODE'
+          const fs = require('node:fs');
+          const source = JSON.parse(fs.readFileSync('/tmp/github-contributions.json', 'utf8'));
+          const compact = {
+            generatedAt: new Date().toISOString().slice(0, 10),
+            user: 'Gao-Chenkai',
+            calendar: {
+              totalContributions: source.contributionCalendar.totalContributions,
+              months: source.contributionCalendar.months,
+              weeks: source.contributionCalendar.weeks
+            },
+            stats: {
+              commits: source.totalCommitContributions,
+              issues: source.totalIssueContributions,
+              pullRequests: source.totalPullRequestContributions,
+              reviews: source.totalPullRequestReviewContributions,
+              repositoriesWithCommits: source.totalRepositoriesWithContributedCommits,
+              repositoriesWithIssues: source.totalRepositoriesWithContributedIssues,
+              repositoriesWithPullRequests: source.totalRepositoriesWithContributedPullRequests,
+              repositoriesCreated: source.totalRepositoryContributions
+            },
+            repositories: source.commitContributionsByRepository.map((item) => ({
+              name: item.repository.nameWithOwner,
+              url: item.repository.url,
+              commits: item.contributions.totalCount
+            }))
+          };
+
+          fs.mkdirSync('data', { recursive: true });
+          fs.writeFileSync(
+            'data/github-contributions.js',
+            'window.__GITHUB_CONTRIBUTIONS__ = ' + JSON.stringify(compact) + ';\n'
+          );
+          NODE
+
+      - name: Commit changed contribution data
+        run: |
+          if git diff --quiet -- data/github-contributions.js; then
+            exit 0
+          fi
+
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/github-contributions.js
+          git commit -m "chore: refresh GitHub contribution graph"
+          git push
