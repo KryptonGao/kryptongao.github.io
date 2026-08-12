@@ -1,754 +1,616 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="zh-CN" data-theme="light">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Chenkai &mdash; iOS 开发者</title>
-    <meta name="description" content="Gao Chenkai — 独立 iOS 开发者，StudyPulse 与 GetAns 的作者。用心打造原生 Apple 体验。">
+    <title>Gao Chenkai | 个人主页</title>
+    <meta name="description" content="Gao Chenkai 的个人主页，记录个人介绍。">
+    <link rel="icon" href="images/profile.jpg" type="image/jpeg">
+    <link rel="stylesheet" href="profile.css?v=20260812">
     <style>
-        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        *, *::before, *::after { box-sizing: border-box; }
 
         :root {
-            --bg-primary: #f8fafc;
-            --bg-secondary: #ffffff;
-            --bg-card: #ffffff;
-            --bg-alt: #f1f5f9;
-            --text-primary: #0f172a;
-            --text-secondary: #475569;
-            --text-muted: #94a3b8;
-            --accent: #0891b2;
-            --accent-light: #06b6d4;
-            --accent-gradient: linear-gradient(135deg, #0891b2, #6366f1);
-            --accent-gradient-subtle: linear-gradient(135deg, rgba(8,145,178,0.08), rgba(99,102,241,0.06));
-            --border: #e2e8f0;
-            --border-light: #f1f5f9;
-            --shadow-sm: 0 1px 2px rgba(0,0,0,0.05);
-            --shadow-md: 0 4px 6px -1px rgba(0,0,0,0.07), 0 2px 4px -2px rgba(0,0,0,0.05);
-            --shadow-lg: 0 10px 15px -3px rgba(0,0,0,0.08), 0 4px 6px -4px rgba(0,0,0,0.04);
-            --shadow-glow: 0 0 40px rgba(8, 145, 178, 0.12);
-            --radius-sm: 8px;
-            --radius-md: 12px;
-            --radius-lg: 16px;
-            --max-width: 1100px;
+            --body-bg: #fafbfc;
+            --masthead-bg: rgba(255, 255, 255, 0.95);
+            --footer-bg: linear-gradient(180deg, #f1f5f9 0%, #e2e8f0 100%);
+            --surface: #ffffff;
+            --news-bg: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+            --text: #1f2937;
+            --body-text: #374151;
+            --muted: #6b7280;
+            --faint: #9ca3af;
+            --link: #1d4ed8;
+            --link-hover: #1e40af;
+            --border: #e5e7eb;
+            --border-soft: #eef0f3;
+            --avatar-bg: #ffffff;
+            --shadow-sm: 0 1px 2px rgb(0 0 0 / 0.05);
+            --radius: 8px;
         }
 
-        html { scroll-behavior: smooth; scroll-padding-top: 80px; }
+        html[data-theme="dark"] {
+            --body-bg: #111827;
+            --masthead-bg: rgba(17, 24, 39, 0.96);
+            --footer-bg: linear-gradient(180deg, #1f2937 0%, #111827 100%);
+            --surface: #1f2937;
+            --news-bg: linear-gradient(135deg, #1f2937 0%, #243244 100%);
+            --text: #f3f4f6;
+            --body-text: #d1d5db;
+            --muted: #9ca3af;
+            --faint: #6b7280;
+            --link: #93c5fd;
+            --link-hover: #bfdbfe;
+            --border: #374151;
+            --border-soft: #293548;
+            --avatar-bg: #1f2937;
+            --shadow-sm: 0 1px 2px rgb(0 0 0 / 0.2);
+        }
+
+        html { scroll-behavior: smooth; }
 
         body {
-            font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
-            background: var(--bg-primary);
-            color: var(--text-primary);
-            line-height: 1.6;
+            min-width: 320px;
+            min-height: 100vh;
+            margin: 0;
+            background: var(--body-bg);
+            color: var(--text);
+            font-family: "IBM Plex Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+            font-size: 16px;
+            line-height: 1.65;
+            letter-spacing: -0.01em;
+            display: flex;
+            flex-direction: column;
             -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale;
+            transition: background-color 0.2s ease, color 0.2s ease;
         }
 
-        .bg-grid {
-            position: fixed;
-            inset: 0;
-            z-index: 0;
-            pointer-events: none;
-            opacity: 0.35;
-            background-image:
-                linear-gradient(var(--border-light) 1px, transparent 1px),
-                linear-gradient(90deg, var(--border-light) 1px, transparent 1px);
-            background-size: 60px 60px;
-            mask-image: radial-gradient(ellipse 80% 60% at 50% 30%, black 20%, transparent 70%);
-            -webkit-mask-image: radial-gradient(ellipse 80% 60% at 50% 30%, black 20%, transparent 70%);
+        a {
+            color: var(--link);
+            text-decoration-thickness: 1px;
+            text-underline-offset: 3px;
         }
 
-        .nav {
+        a:hover { color: var(--link-hover); }
+
+        button { font: inherit; }
+
+        .icon-sprite {
+            position: absolute;
+            width: 0;
+            height: 0;
+            overflow: hidden;
+        }
+
+        .icon {
+            width: 1em;
+            height: 1em;
+            flex: 0 0 auto;
+            fill: currentColor;
+        }
+
+        .masthead {
+            border-bottom: 1px solid var(--border);
+            background: var(--masthead-bg);
             position: sticky;
             top: 0;
-            z-index: 100;
-            background: rgba(255,255,255,0.85);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            border-bottom: 1px solid var(--border);
+            z-index: 10;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            flex: 0 0 auto;
         }
-        .nav-inner {
-            max-width: var(--max-width);
+
+        .masthead-inner,
+        .page-shell {
+            width: min(calc(100% - 32px), 1216px);
             margin: 0 auto;
-            padding: 0 24px;
-            height: 56px;
+        }
+
+        .site-nav {
+            min-height: 56px;
             display: flex;
             align-items: center;
             justify-content: space-between;
         }
-        .nav-logo {
+
+        .nav-links {
             display: flex;
-            align-items: center;
-            gap: 10px;
-            font-size: 1.1rem;
-            font-weight: 700;
-            color: var(--text-primary);
-            text-decoration: none;
-            letter-spacing: -0.01em;
+            align-items: stretch;
+            min-height: 56px;
+            margin: 0;
+            padding: 0;
+            list-style: none;
         }
-        .nav-logo-icon {
-            width: 34px; height: 34px;
-            border-radius: 8px;
-            display: block;
-            object-fit: contain;
-            flex-shrink: 0;
-        }
-        .nav-links { display: flex; gap: 32px; list-style: none; }
+
+        .nav-links li + li { border-left: 1px solid var(--border); }
+
         .nav-links a {
-            text-decoration: none;
-            color: var(--text-secondary);
-            font-size: 0.875rem;
-            font-weight: 500;
-            transition: color 0.2s;
-        }
-        .nav-links a:hover { color: var(--accent); }
-
-        .hero {
             position: relative;
-            z-index: 1;
-            padding: 120px 24px 100px;
-            text-align: center;
-            overflow: hidden;
-        }
-        .hero::before {
-            content: "";
-            position: absolute;
-            top: -50%;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 900px;
-            height: 900px;
-            background: radial-gradient(circle, rgba(8,145,178,0.06) 0%, transparent 70%);
-            border-radius: 50%;
-            pointer-events: none;
-        }
-        .hero-badge {
-            display: inline-block;
-            padding: 6px 18px;
-            background: rgba(8, 145, 178, 0.08);
-            border: 1px solid rgba(8, 145, 178, 0.15);
-            border-radius: 100px;
-            font-size: 0.8rem;
-            font-weight: 600;
-            color: var(--accent);
-            letter-spacing: 0.5px;
-            margin-bottom: 28px;
-            position: relative;
-        }
-        .hero h1 {
-            font-size: clamp(2.8rem, 6vw, 4rem);
-            font-weight: 800;
-            letter-spacing: -0.03em;
-            line-height: 1.08;
-            margin-bottom: 20px;
-            background: var(--accent-gradient);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            position: relative;
-        }
-        .hero-name-en {
-            display: block;
-            font-size: 1rem;
-            font-weight: 500;
-            letter-spacing: 0.04em;
-            margin-top: 6px;
-            opacity: 0.7;
-        }
-        .hero-subtitle {
-            font-size: 1.2rem;
-            color: var(--text-secondary);
-            max-width: 560px;
-            margin: 0 auto 16px;
-            line-height: 1.75;
-            position: relative;
-        }
-        .hero-detail {
-            font-size: 0.95rem;
-            color: var(--text-muted);
-            max-width: 500px;
-            margin: 0 auto 40px;
-            line-height: 1.65;
-            position: relative;
-        }
-        .hero-actions {
-            display: flex;
-            gap: 12px;
-            justify-content: center;
-            flex-wrap: wrap;
-            position: relative;
-        }
-        .btn {
             display: inline-flex;
             align-items: center;
             gap: 8px;
-            padding: 13px 30px;
-            border-radius: 100px;
-            font-size: 0.9rem;
-            font-weight: 600;
+            min-height: 56px;
+            padding: 0 14px;
+            color: var(--muted);
+            font-size: 16px;
             text-decoration: none;
+            transition: color 0.2s ease;
+        }
+
+        .nav-links a:hover,
+        .nav-links a.is-active { color: var(--text); }
+
+        .nav-links a.is-active { font-weight: 600; }
+
+        .nav-links a::after {
+            position: absolute;
+            right: 14px;
+            bottom: 10px;
+            left: 14px;
+            height: 2px;
+            background: #2563eb;
+            content: "";
+            opacity: 0;
+            transform: scaleX(0);
+            transform-origin: center;
+            transition: transform 0.28s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.2s ease;
+        }
+
+        .nav-links a:hover::after,
+        .nav-links a.is-active::after {
+            opacity: 1;
+            transform: scaleX(1);
+        }
+
+        .nav-links .icon { width: 15px; height: 15px; color: var(--faint); }
+
+        .control-buttons { display: flex; align-items: center; gap: 8px; }
+
+        .control-btn,
+        .nav-toggle {
+            display: inline-flex;
+            width: 38px;
+            height: 38px;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            background: var(--surface);
+            color: var(--muted);
             cursor: pointer;
-            border: none;
-            transition: all 0.2s;
+            transition: color 0.2s ease, border-color 0.2s ease, background-color 0.2s ease;
         }
-        .btn-primary {
-            background: var(--accent-gradient);
-            color: #fff;
-            box-shadow: 0 4px 24px rgba(99, 102, 241, 0.3);
-        }
-        .btn-primary:hover {
-            transform: translateY(-1px);
-            box-shadow: 0 6px 32px rgba(99, 102, 241, 0.4);
-        }
-        .btn-ghost {
-            background: var(--bg-secondary);
-            color: var(--text-primary);
-            border: 1px solid var(--border);
-        }
-        .btn-ghost:hover { border-color: var(--accent); color: var(--accent); }
 
-        .stats-strip {
-            position: relative;
-            z-index: 1;
-            padding: 0 24px;
-            margin-top: -28px;
-        }
-        .stats-inner {
-            max-width: var(--max-width);
-            margin: 0 auto;
+        .control-btn:hover,
+        .nav-toggle:hover { border-color: #9ca3af; color: var(--text); }
+
+        .nav-toggle { display: none; }
+
+        .page-shell {
             display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 1px;
-            background: var(--border);
-            border-radius: var(--radius-md);
-            overflow: hidden;
-            border: 1px solid var(--border);
-        }
-        .stat-item {
-            background: var(--bg-card);
-            padding: 36px 24px;
-            text-align: center;
-        }
-        .stat-value {
-            font-size: 2.2rem;
-            font-weight: 800;
-            background: var(--accent-gradient);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            letter-spacing: -0.02em;
-        }
-        .stat-label {
-            font-size: 0.85rem;
-            color: var(--text-muted);
-            margin-top: 6px;
+            grid-template-columns: 260px minmax(0, 900px);
+            gap: 56px;
+            padding-top: 48px;
+            padding-bottom: 24px;
+            flex: 1 0 auto;
         }
 
-        .section {
-            position: relative;
-            z-index: 1;
-            padding: 100px 24px;
-        }
-        .section-alt { background: var(--bg-secondary); }
-        .section-inner { max-width: var(--max-width); margin: 0 auto; }
-        .section-label {
-            font-size: 0.78rem;
-            font-weight: 700;
-            color: var(--accent);
-            letter-spacing: 1.5px;
-            text-transform: uppercase;
-            margin-bottom: 14px;
-        }
-        .section h2 {
-            font-size: 2.1rem;
-            font-weight: 700;
-            letter-spacing: -0.025em;
-            margin-bottom: 18px;
-            color: var(--text-primary);
-        }
-        .section-desc {
-            font-size: 1.05rem;
-            color: var(--text-secondary);
-            max-width: 560px;
-            margin-bottom: 56px;
-            line-height: 1.7;
-        }
+        .sidebar { min-width: 0; }
 
-        .feature-row {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 64px;
-            align-items: center;
-            margin-bottom: 80px;
-        }
-        .feature-row:last-child { margin-bottom: 0; }
-        .feature-row.reverse { direction: rtl; }
-        .feature-row.reverse > * { direction: ltr; }
-        .feature-text h3 {
-            font-size: 1.5rem;
-            font-weight: 700;
-            margin-bottom: 14px;
-            color: var(--text-primary);
-        }
-        .feature-text .feature-tag {
-            display: inline-block;
-            padding: 4px 12px;
-            background: rgba(8, 145, 178, 0.08);
-            border-radius: 100px;
-            font-size: 0.75rem;
-            font-weight: 600;
-            color: var(--accent);
-            margin-bottom: 16px;
-        }
-        .feature-text p {
-            font-size: 0.95rem;
-            color: var(--text-secondary);
-            line-height: 1.7;
-            margin-bottom: 16px;
-        }
-        .feature-text ul {
-            list-style: none;
-            display: flex;
-            flex-direction: column;
-            gap: 8px;
-        }
-        .feature-text ul li {
-            font-size: 0.9rem;
-            color: var(--text-secondary);
-            padding-left: 20px;
-            position: relative;
-        }
-        .feature-text ul li::before {
-            content: "";
-            position: absolute;
-            left: 0;
-            top: 8px;
-            width: 6px;
-            height: 6px;
-            border-radius: 50%;
-            background: var(--accent);
-        }
-        .feature-img {
-            border-radius: var(--radius-md);
-            overflow: hidden;
-            border: 1px solid var(--border);
-            box-shadow: var(--shadow-md);
-        }
-        .feature-img img {
-            width: 100%;
-            height: auto;
+        .avatar {
             display: block;
+            width: 200px;
+            height: 200px;
+            margin: 0 0 14px;
+            border: 2px solid var(--border);
+            border-radius: 50%;
+            background: var(--avatar-bg);
+            object-fit: cover;
+            filter: none;
         }
-        .feature-img .img-placeholder {
-            aspect-ratio: 0.5625;
-            background: var(--accent-gradient-subtle);
+
+        .profile-name {
+            margin: 0;
+            color: var(--text);
+            font-size: 1.38rem;
+            font-weight: 700;
+            line-height: 1.25;
+        }
+
+        .profile-role {
+            margin: 5px 0 16px;
+            color: var(--muted);
+            font-size: 0.94rem;
+        }
+
+        .profile-links {
             display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--text-muted);
-            font-size: 0.9rem;
             flex-direction: column;
-            gap: 8px;
-        }
-        .feature-img .img-placeholder .ph-label {
-            font-size: 0.75rem;
-            opacity: 0.7;
-        }
-
-        .cards-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(310px, 1fr));
-            gap: 20px;
-        }
-        .card {
-            background: var(--bg-card);
-            border: 1px solid var(--border);
-            border-radius: var(--radius-md);
-            padding: 28px;
-            transition: all 0.3s;
-        }
-        .card:hover {
-            transform: translateY(-2px);
-            box-shadow: var(--shadow-md);
-            border-color: rgba(8, 145, 178, 0.25);
-        }
-        .card-icon {
-            width: 44px; height: 44px;
-            border-radius: var(--radius-sm);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.2rem;
-            margin-bottom: 18px;
-        }
-        .card-icon.cyan { background: rgba(8, 145, 178, 0.1); color: var(--accent); }
-        .card-icon.indigo { background: rgba(99, 102, 241, 0.1); color: #6366f1; }
-        .card h3 { font-size: 1.05rem; font-weight: 700; margin-bottom: 8px; color: var(--text-primary); }
-        .card p { font-size: 0.9rem; color: var(--text-secondary); line-height: 1.65; }
-        .card a {
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-            margin-top: 16px;
-            font-size: 0.85rem;
-            font-weight: 600;
-            color: var(--accent);
-            text-decoration: none;
-            transition: gap 0.2s;
-        }
-        .card a:hover { gap: 10px; }
-
-        .tech-list {
-            display: flex;
-            flex-wrap: wrap;
             gap: 10px;
+            margin: 0;
+            padding: 0 0 20px;
+            border-bottom: 1px dashed var(--border);
             list-style: none;
         }
-        .tech-list li {
-            padding: 9px 20px;
-            background: rgba(8, 145, 178, 0.05);
-            border: 1px solid rgba(8, 145, 178, 0.1);
-            border-radius: 100px;
-            font-size: 0.85rem;
+
+        .profile-links li,
+        .profile-links a {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: var(--body-text);
+            font-size: 0.96rem;
+            line-height: 1.4;
+        }
+
+        .profile-links a { text-decoration: none; }
+        .profile-links a:hover { color: var(--link); }
+        .profile-links .icon { width: 17px; height: 17px; color: var(--muted); }
+
+        .page-content { min-width: 0; }
+
+        .intro {
+            margin: 0;
+            color: var(--body-text);
+            font-family: Lora, Georgia, "Times New Roman", "Songti SC", serif;
+            font-size: 1.02rem;
+            line-height: 1.75;
+            letter-spacing: 0.005em;
+        }
+
+        .intro + .intro { margin-top: 14px; }
+
+        .intro strong { color: var(--text); font-weight: 600; }
+        .intro em { color: var(--text); }
+
+        .closing { margin-top: 18px !important; }
+
+        .content-section { scroll-margin-top: 80px; }
+
+        .home-github-dashboard { margin-top: 36px; }
+
+        .section-title {
+            margin: 30px 0 13px;
+            color: var(--muted);
+            font-size: 1.15rem;
             font-weight: 500;
-            color: var(--text-secondary);
+            line-height: 1.4;
         }
 
-        .contact-links {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 16px;
+        .news-list {
+            margin: 0;
+            padding: 5px 18px 5px 42px;
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            background: var(--news-bg);
+            box-shadow: var(--shadow-sm);
             list-style: none;
         }
-        .contact-links li a {
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            padding: 14px 28px;
-            background: var(--bg-card);
-            border: 1px solid var(--border);
-            border-radius: var(--radius-md);
+
+        .news-list li {
+            position: relative;
+            display: grid;
+            grid-template-columns: 68px minmax(0, 1fr);
+            gap: 0;
+            padding: 8px 0;
+            color: var(--body-text);
+            font-family: Lora, Georgia, "Times New Roman", "Songti SC", serif;
             font-size: 0.95rem;
-            font-weight: 600;
-            color: var(--text-primary);
-            text-decoration: none;
-            transition: all 0.2s;
+            line-height: 1.65;
         }
-        .contact-links li a:hover {
-            border-color: var(--accent);
-            color: var(--accent);
-            box-shadow: var(--shadow-sm);
+
+        .news-list li + li { border-top: 1px dashed var(--border); }
+
+        .news-list li::before {
+            position: absolute;
+            top: 0.82em;
+            left: -22px;
+            width: 5px;
+            height: 5px;
+            border-radius: 50%;
+            background: var(--muted);
+            content: "";
         }
-        .contact-icon {
-            font-size: 1.3rem;
+
+        .news-date {
+            color: var(--muted);
+            font-family: "IBM Plex Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+            font-size: 0.86rem;
+            letter-spacing: 0;
+            white-space: nowrap;
         }
+
+        .news-list a { font-weight: 500; }
 
         .footer {
-            position: relative;
-            z-index: 1;
+            margin-top: auto;
+            flex: 0 0 auto;
+            padding: 20px 16px;
             border-top: 1px solid var(--border);
-            padding: 48px 24px;
-            background: var(--bg-secondary);
-        }
-        .footer-inner {
-            max-width: var(--max-width);
-            margin: 0 auto;
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-            flex-wrap: wrap;
-            gap: 32px;
-        }
-        .footer-col h5 {
-            font-size: 0.8rem;
-            font-weight: 700;
-            color: var(--text-muted);
-            letter-spacing: 1px;
-            text-transform: uppercase;
-            margin-bottom: 14px;
-        }
-        .footer-col ul {
-            list-style: none;
-            display: flex;
-            flex-direction: column;
-            gap: 8px;
-        }
-        .footer-col ul li a {
-            text-decoration: none;
-            color: var(--text-secondary);
-            font-size: 0.85rem;
-            transition: color 0.2s;
-        }
-        .footer-col ul li a:hover { color: var(--accent); }
-        .footer-bottom {
-            max-width: var(--max-width);
-            margin: 32px auto 0;
-            padding-top: 24px;
-            border-top: 1px solid var(--border);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 12px;
-            font-size: 0.82rem;
-            color: var(--text-muted);
+            background: var(--footer-bg);
+            color: var(--muted);
+            text-align: center;
+            font-size: 0.88rem;
         }
 
+        .footer p { margin: 0; }
+        .footer p + p { margin-top: 4px; color: var(--faint); }
+
         @media (max-width: 900px) {
-            .feature-row { grid-template-columns: 1fr; gap: 32px; }
-            .feature-row.reverse { direction: ltr; }
-            .stats-inner { grid-template-columns: repeat(2, 1fr); }
+            .page-shell {
+                grid-template-columns: 200px minmax(0, 1fr);
+                gap: 32px;
+            }
+
+            .avatar { width: 160px; height: 160px; }
         }
-        @media (max-width: 768px) {
-            .nav-links { display: none; }
-            .hero { padding: 80px 20px 60px; }
-            .hero h1 { font-size: 2.2rem; }
-            .section { padding: 60px 20px; }
-            .footer-inner { flex-direction: column; }
+
+        @media (max-width: 680px) {
+            .masthead-inner,
+            .page-shell { width: min(calc(100% - 28px), 560px); }
+
+            .site-nav { position: relative; }
+
+            .nav-toggle { display: inline-flex; }
+
+            .nav-links {
+                position: absolute;
+                top: 56px;
+                right: 0;
+                left: 0;
+                display: none;
+                min-height: 0;
+                flex-direction: column;
+                border: 1px solid var(--border);
+                border-top: 0;
+                background: var(--masthead-bg);
+                box-shadow: var(--shadow-sm);
+            }
+
+            .nav-links.is-open { display: flex; }
+            .nav-links li + li { border-top: 1px solid var(--border); border-left: 0; }
+            .nav-links a { width: 100%; min-height: 45px; padding: 0 16px; }
+            .nav-links a.is-active::after { right: 16px; bottom: 0; left: 16px; }
+
+            .control-buttons { margin-left: auto; margin-right: 8px; }
+
+            .page-shell {
+                display: block;
+                padding-top: 32px;
+            }
+
+            .sidebar {
+                display: grid;
+                grid-template-columns: 112px minmax(0, 1fr);
+                gap: 18px;
+                align-items: center;
+                margin-bottom: 34px;
+            }
+
+            .avatar { width: 112px; height: 112px; margin: 0; }
+            .profile-role { margin-bottom: 11px; }
+            .profile-links { gap: 7px; padding-bottom: 0; border-bottom: 0; }
+            .profile-links li, .profile-links a { font-size: 0.88rem; }
+
+            .intro { font-size: 1rem; }
+            .news-list { padding-left: 35px; }
+            .news-list li { grid-template-columns: 58px minmax(0, 1fr); font-size: 0.92rem; }
+        }
+
+        @media (max-width: 430px) {
+            .sidebar { grid-template-columns: 96px minmax(0, 1fr); gap: 14px; }
+            .avatar { width: 96px; height: 96px; }
+            .profile-name { font-size: 1.2rem; }
+            .news-list li { grid-template-columns: 1fr; gap: 2px; }
+            .news-date { font-size: 0.8rem; }
+        }
+
+        @keyframes page-fade-in {
+            from { opacity: 0; transform: translateY(12px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes masthead-enter {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes sidebar-enter {
+            from { opacity: 0; transform: translateX(-18px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        @keyframes page-fade-out {
+            from { opacity: 1; transform: translateY(0); }
+            to { opacity: 0; transform: translateY(-8px); }
+        }
+
+        body { animation: page-fade-in 0.39s ease both; }
+        .masthead { animation: masthead-enter 0.31s ease both; }
+        .page-shell { animation: page-fade-in 0.46s 0.03s ease both; }
+        .sidebar { animation: sidebar-enter 0.43s 0.07s ease both; }
+        .page-content { animation: page-fade-in 0.43s 0.1s ease both; }
+        .news-list, .contact-list { animation: page-fade-in 0.39s 0.19s ease both; }
+        .footer { animation: page-fade-in 0.39s 0.21s ease both; }
+
+        body.page-leaving { pointer-events: none; }
+        body.page-leaving .masthead,
+        body.page-leaving .page-shell,
+        body.page-leaving .footer { animation: page-fade-out 0.14s ease both; }
+
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                scroll-behavior: auto !important;
+                animation: none !important;
+                transition-duration: 0.01ms !important;
+            }
         }
     </style>
 </head>
 <body>
+    <svg class="icon-sprite" aria-hidden="true" focusable="false">
+        <symbol id="icon-home" viewBox="0 0 24 24">
+            <path d="M3 10.8 12 3l9 7.8v8.7a1.5 1.5 0 0 1-1.5 1.5h-5v-6h-5v6h-5A1.5 1.5 0 0 1 3 19.5v-8.7Z"/>
+        </symbol>
+        <symbol id="icon-user" viewBox="0 0 24 24">
+            <path d="M12 12a4.5 4.5 0 1 0 0-9 4.5 4.5 0 0 0 0 9Zm0 2c-4.4 0-8 2.4-8 5.4V21h16v-1.6c0-3-3.6-5.4-8-5.4Z"/>
+        </symbol>
+        <symbol id="icon-mail" viewBox="0 0 24 24">
+            <path d="M3 5h18a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2Zm9 7.2L21 7H3l9 5.2ZM3 9.3V17h18V9.3l-9 5.2-9-5.2Z"/>
+        </symbol>
+        <symbol id="icon-github" viewBox="0 0 24 24">
+            <path d="M12 2a10 10 0 0 0-3.2 19.5c.5.1.7-.2.7-.5v-1.8c-2.8.6-3.4-1.2-3.4-1.2-.5-1.2-1.1-1.5-1.1-1.5-.9-.6.1-.6.1-.6 1 0 1.5 1 1.5 1 .9 1.5 2.3 1.1 2.9.8.1-.6.4-1.1.7-1.3-2.2-.3-4.5-1.1-4.5-4.9 0-1.1.4-2 1-2.7-.1-.3-.4-1.3.1-2.7 0 0 .8-.3 2.8 1a9.7 9.7 0 0 1 5.1 0c2-1.3 2.8-1 2.8-1 .5 1.4.2 2.4.1 2.7.6.7 1 1.6 1 2.7 0 3.8-2.3 4.6-4.5 4.9.4.3.7.9.7 1.8V21c0 .3.2.6.7.5A10 10 0 0 0 12 2Z"/>
+        </symbol>
+        <symbol id="icon-news" viewBox="0 0 24 24">
+            <path d="M5 3h12a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a3 3 0 0 1-3-3V6a3 3 0 0 1 3-3Zm0 2a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h12V5H5Zm3 3h6v2H8V8Zm0 4h6v2H8v-2Zm0 4h4v2H8v-2ZM21 7h1v12a2 2 0 0 1-2 2h-1v-2h1a0 0 0 0 0 0 0V7h1Z"/>
+        </symbol>
+        <symbol id="icon-sun" viewBox="0 0 24 24">
+            <path d="M12 7a5 5 0 1 0 0 10 5 5 0 0 0 0-10Zm0-5h2v3h-2V2Zm0 17h2v3h-2v-3ZM2 11h3v2H2v-2Zm17 0h3v2h-3v-2ZM4.2 4.2l1.4-1.4 2.1 2.1-1.4 1.4-2.1-2.1Zm12.1 12.1 1.4-1.4 2.1 2.1-1.4 1.4-2.1-2.1ZM4.2 19.8l2.1-2.1 1.4 1.4-2.1 2.1-1.4-1.4Zm12.1-14.9 2.1-2.1 1.4 1.4-2.1 2.1-1.4-1.4Z"/>
+        </symbol>
+        <symbol id="icon-moon" viewBox="0 0 24 24">
+            <path d="M20.4 15.2A8.7 8.7 0 0 1 8.8 3.6 9 9 0 1 0 20.4 15.2Z"/>
+        </symbol>
+        <symbol id="icon-menu" viewBox="0 0 24 24">
+            <path d="M3 5h18v2H3V5Zm0 6h18v2H3v-2Zm0 6h18v2H3v-2Z"/>
+        </symbol>
+    </svg>
 
-<div class="bg-grid"></div>
-
-<nav class="nav">
-    <div class="nav-inner">
-        <a href="#" class="nav-logo">
-            <img class="nav-logo-icon" src="images/logo.png" alt="Logo">
-            Chenkai
-        </a>
-        <ul class="nav-links">
-            <li><a href="#about">关于</a></li>
-            <li><a href="#projects">项目</a></li>
-            <li><a href="#skills">技能</a></li>
-            <li><a href="#contact">联系</a></li>
-        </ul>
-    </div>
-</nav>
-
-<header class="hero">
-    <div class="hero-badge" data-animate="scale-up">iOS 独立开发者</div>
-    <h1 data-animate="scale-up">
-        Chenkai
-        <span class="hero-name-en">Gao Chenkai</span>
-    </h1>
-    <p class="hero-subtitle" data-animate="fade-up">用心打造原生的 Apple 平台体验。</p>
-    <p class="hero-detail" data-animate="fade-up">独立 iOS 开发者，专注为学习者和学生打造实用工具。<br>每一个像素、每一次交互，都经过认真推敲。</p>
-    <div class="hero-actions" data-animate="fade-up">
-       <a href="https://gao-chenkai.github.io/StudyPulse/" target="_blank" rel="noopener" class="btn btn-primary">了解 StudyPulse &rarr;</a>
-        <a href="https://gao-chenkai.github.io/GetAns/" target="_blank" rel="noopener" class="btn btn-ghost">了解 GetAns</a>
-    </div>
-</header>
-
-<div class="stats-strip">
-    <div class="stats-inner">
-        <div class="stat-item">
-            <div class="stat-value" data-count="2" data-suffix="">2</div>
-            <div class="stat-label">款应用</div>
+    <header class="masthead">
+        <div class="masthead-inner">
+            <nav class="site-nav" aria-label="主导航">
+                <ul class="nav-links" id="primary-nav">
+                    <li>
+                        <a class="is-active" href="index.html">
+                            <svg class="icon" aria-hidden="true"><use href="#icon-home"></use></svg>
+                            <span>Home</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="about.html">
+                            <svg class="icon" aria-hidden="true"><use href="#icon-user"></use></svg>
+                            <span>About</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="news.html">
+                            <svg class="icon" aria-hidden="true"><use href="#icon-news"></use></svg>
+                            <span>News</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="contact.html">
+                            <svg class="icon" aria-hidden="true"><use href="#icon-mail"></use></svg>
+                            <span>Contact</span>
+                        </a>
+                    </li>
+                </ul>
+                <div class="control-buttons">
+                    <button class="control-btn" id="theme-toggle" type="button" aria-label="切换主题" aria-pressed="false">
+                        <svg class="icon" aria-hidden="true"><use id="theme-icon" href="#icon-sun"></use></svg>
+                    </button>
+                    <button class="nav-toggle" id="nav-toggle" type="button" aria-label="打开导航" aria-expanded="false" aria-controls="primary-nav">
+                        <svg class="icon" aria-hidden="true"><use href="#icon-menu"></use></svg>
+                    </button>
+                </div>
+            </nav>
         </div>
-        <div class="stat-item">
-            <div class="stat-value" data-count="15" data-suffix="+">15+</div>
-            <div class="stat-label">教育体系覆盖</div>
-        </div>
-        <div class="stat-item">
-            <div class="stat-value" data-count="5" data-suffix="">5</div>
-            <div class="stat-label">语言支持</div>
-        </div>
-        <div class="stat-item">
-            <div class="stat-value" data-count="7" data-suffix="">7</div>
-            <div class="stat-label">数学求解器</div>
-        </div>
-    </div>
-</div>
+    </header>
 
-<section class="section" id="about">
-    <div class="section-inner">
-        <div class="section-label">关于</div>
-        <h2>关于我</h2>
-        <p class="section-desc">我是一名独立 iOS 开发者，热爱 Swift、整洁架构，以及打造能真正帮到人的工具。</p>
-
-        <div class="feature-row">
-            <div class="feature-text" data-animate="slide-left">
-                <span class="feature-tag">开发理念</span>
-                <h3>原生优先，用户至上</h3>
-                <p>我相信最好的软件是"水到渠成"的——每一次交互都自然地从它所在的平台生长出来。因此我只用 Swift 和 SwiftUI 构建应用，把 Apple 框架的潜力发挥到极致。</p>
-                <ul>
-                    <li>严格并发（Swift 6）——安全内建于设计之中</li>
-                    <li>MVVM 架构——可测试、可维护、条理清晰</li>
-                    <li>多语言从第一天起——面向全球用户，兼顾本地体验</li>
-                    <li>隐私优先——数据留在设备上，未经同意绝不上传</li>
+    <div class="page-shell" id="home">
+        <aside class="sidebar" aria-label="个人资料">
+            <img class="avatar" src="images/profile.jpg" alt="Gao Chenkai">
+            <div class="profile-content">
+                <h1 class="profile-name">Gao Chenkai</h1>
+                <p class="profile-role">独立创作者</p>
+                <ul class="profile-links">
+                    <li>
+                        <svg class="icon" aria-hidden="true"><use href="#icon-user"></use></svg>
+                        <span>保持好奇，持续记录</span>
+                    </li>
+                    <li>
+                        <a href="mailto:DevChenkai@outlook.com">
+                            <svg class="icon" aria-hidden="true"><use href="#icon-mail"></use></svg>
+                            <span>Email</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://github.com/Gao-Chenkai" target="_blank" rel="noopener">
+                            <svg class="icon" aria-hidden="true"><use href="#icon-github"></use></svg>
+                            <span>GitHub</span>
+                        </a>
+                    </li>
                 </ul>
             </div>
-            <div class="feature-img" data-animate="feature-img">
-                <img src="images/Xcode.png" alt="Apple 原生开发" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-                <div class="img-placeholder" style="display:none"><span>&#63743;</span><span>Apple 原生开发</span></div>
-            </div>
-        </div>
+        </aside>
+
+        <main class="page-content">
+            <article id="about" class="content-section">
+                <p class="intro">你好，我是 Gao Chenkai，一名独立创作者。我习惯独自把一件事从想法做到可以被看见，也喜欢在忙碌之外留一点时间观察生活，记录那些容易被忽略的细节。</p>
+                <p class="intro">我对新鲜事物保持兴趣，喜欢从问题出发，先弄清楚事情为什么值得做，再慢慢寻找合适的表达方式。写代码、做产品、整理文字，对我来说并不是彼此割裂的事情，它们都是把模糊的想法变得清晰、具体，并最终交到别人手里的过程。</p>
+                <p class="intro">我也接受真正重要的事情需要时间。比起把自己包装成一个已经完成的人，我更愿意诚实地记录正在经历的过程：做选择、反复修改、处理不够理想的结果，偶尔停下来，再继续往前走。</p>
+                <p class="intro">在创作时，我在意功能是否可靠，也在意一个细节能否让使用它的人感到自然、舒服。我愿意花时间打磨结构、文字和交互，因为好的作品不一定复杂，却应该清楚、耐看，并且能够真正解决一点问题。</p>
+                <p class="intro">这个页面是我的一个小小的公开角落。不追求完整的履历，只放我愿意分享的想法、近况，以及那些值得留下来的片段。希望这里不仅能记录我做过什么，也能留下我如何思考、如何工作，以及仍然在寻找什么。</p>
+                <p class="intro closing">如果你也在认真做自己的事，欢迎来信交流。</p>
+            </article>
+
+            <section class="github-dashboard home-github-dashboard" aria-labelledby="home-github-title">
+                <div class="github-dashboard-header">
+                    <div>
+                        <p class="github-kicker">GITHUB CONTRIBUTIONS</p>
+                        <h2 class="internal-section-title" id="home-github-title">GitHub 贡献</h2>
+                    </div>
+                    <a class="github-profile-link" href="https://github.com/Gao-Chenkai" target="_blank" rel="noopener">View on GitHub <span aria-hidden="true">↗</span></a>
+                </div>
+
+                <div class="contribution-card" data-github-contribution-card>
+                    <div class="contribution-card-heading">
+                        <div>
+                            <p class="contribution-total" data-contribution-total>正在读取贡献统计…</p>
+                            <p class="contribution-caption">过去一年 · 公开贡献</p>
+                        </div>
+                        <span class="contribution-updated" data-contribution-updated>GraphQL snapshot</span>
+                    </div>
+
+                    <div class="contribution-calendar-scroll">
+                        <div class="contribution-calendar">
+                            <div class="contribution-months" data-contribution-months aria-hidden="true"></div>
+                            <div class="contribution-calendar-body">
+                                <div class="contribution-weekdays" aria-hidden="true">
+                                    <span></span><span>Mon</span><span></span><span>Wed</span><span></span><span>Fri</span><span></span>
+                                </div>
+                                <div class="contribution-grid" data-contribution-grid role="grid" aria-label="过去一年 GitHub 贡献日历"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="contribution-legend-row">
+                        <a href="https://docs.github.com/en/account-and-profile/concepts/contributions" target="_blank" rel="noopener">Learn how we count contributions</a>
+                        <span class="contribution-legend"><span>Less</span><span class="legend-cells" aria-hidden="true"><i data-level="0"></i><i data-level="1"></i><i data-level="2"></i><i data-level="3"></i><i data-level="4"></i></span><span>More</span></span>
+                    </div>
+
+                    <div class="contribution-overview">
+                        <div class="overview-copy">
+                            <h2>Activity overview</h2>
+                            <p data-overview-copy>正在整理贡献仓库…</p>
+                        </div>
+                        <div class="overview-stat-grid" aria-label="贡献分类统计">
+                            <div class="overview-stat"><strong data-contribution-stat="commits">—</strong><span>Commits</span></div>
+                            <div class="overview-stat"><strong data-contribution-stat="pullRequests">—</strong><span>Pull requests</span></div>
+                            <div class="overview-stat"><strong data-contribution-stat="issues">—</strong><span>Issues</span></div>
+                            <div class="overview-stat"><strong data-contribution-stat="reviews">—</strong><span>Reviews</span></div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
     </div>
-</section>
 
-<section class="section section-alt" id="projects">
-    <div class="section-inner">
-        <div class="section-label">项目</div>
-        <h2>我的作品</h2>
-        <p class="section-desc">两款应用，分别解决真实的问题，注重设计细节与深度的平台集成。</p>
+    <footer class="footer">
+        <p>&copy; 2026 Gao Chenkai · Last updated: August 2026</p>
+        <p>感谢来访</p>
+    </footer>
 
-        <div class="feature-row" data-animate="fade-up">
-            <div class="feature-text">
-                <span class="feature-tag">iOS &amp; iPadOS</span>
-                <h3>StudyPulse</h3>
-                <p>一款用 SwiftUI  OCR 记录错题、安排考试日程，并通过 Apple Watch 的 HRV 数据评估你的学习准备度。</p>
-                <ul>
-                    <li>覆盖 15+ 教育体系，自动填充科目列表</li>
-                    <li>四区结构错题本，支持 Vision OCR + Markdown 实时预览</li>
-                    <li>基于 HRV 的学习准备度评估，通过 HealthKit 获取数据</li>
-                    <li>WidgetKit 小组件、灵动岛 Live Activity、Siri 快捷指令</li>
-                    <li>5 语言支持：EN、简中、繁中、日本語、한국어</li>
-                </ul>
-                <a href="https://gao-chenkai.github.io/StudyPulse/" target="_blank" rel="noopener" class="btn btn-primary" style="margin-top:20px;">查看 StudyPulse &rarr;</a>
-            </div>
-            <div class="feature-img" data-animate="feature-img">
-                <img src="images/logo.png" alt="StudyPulse" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-                <div class="img-placeholder" style="display:none"><span>&#63743;</span><span>StudyPulse</span></div>
-            </div>
-        </div>
-
-        <div class="feature-row reverse" data-animate="fade-up">
-            <div class="feature-text">
-                <span class="feature-tag">watchOS</span>
-                <h3>GetAns</h3>
-                <p>一款独立的 Apple Watch 方程求解器。七个求解器覆盖二次方程、线性方程组、分式方程、自由表达式、多项式因式分解、统计分析和丢番图整数方程 — 全部带有逐步推导过程。内置 SwiftUI 原生图表、自定义震动键盘、30+ 公式手册。</p>
-                <ul>
-                    <li>7 大求解器，全部输出逐步推导</li>
-                    <li>手表端自定义键盘，带有触觉反馈</li>
-                    <li>符号多项式引擎，9 种因式分解策略 + 策略流程图</li>
-                    <li>公式代入计算器、本地求解历史记录</li>
-                    <li>原生 SwiftUI 图表与流程图 — 零第三方依赖</li>
-                    <li>App Intents + 深度链接，支持 Siri / 快捷指令</li>
-                </ul>
-                <a href="https://gao-chenkai.github.io/GetAns/" target="_blank" rel="noopener" class="btn btn-primary" style="margin-top:20px;">查看 GetAns &rarr;</a>
-            </div>
-            <div class="feature-img" data-animate="feature-img">
-                <img src="images/getans-logo.png" alt="GetAns" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-                <div class="img-placeholder" style="display:none"><span>&#8986;</span><span>GetAns &mdash; watchOS</span></div>
-            </div>
-        </div>
-    </div>
-</section>
-
-<section class="section" id="skills">
-    <div class="section-inner">
-        <div class="section-label">技能</div>
-        <h2>技术栈</h2>
-        <p class="section-desc">我日常使用的框架、工具与开发模式。</p>
-
-        <div class="cards-grid" data-animate="fade-up">
-            <div class="card">
-                <div class="card-icon cyan">&#63743;</div>
-                <h3>Swift &amp; SwiftUI</h3>
-                <p>Swift 6.0 严格并发。用 SwiftUI 构建 iPhone、iPad 和 Apple Watch 应用。Swift Charts 做数据可视化。</p>
-            </div>
-            <div class="card">
-                <div class="card-icon indigo">&#9881;</div>
-                <h3>架构设计</h3>
-                <p>MVVM 架构，@MainActor ObservableObject 管理器，nonisolated I/O 枚举，全链路 Sendable 值类型模型。</p>
-            </div>
-            <div class="card">
-                <div class="card-icon cyan">&#9825;</div>
-                <h3>HealthKit 与传感器</h3>
-                <p>HRV（SDNN）、心率、呼吸率、睡眠分期。Z-score 基线评估，隐私优先，数据仅存本地。</p>
-            </div>
-            <div class="card">
-                <div class="card-icon indigo">&#128196;</div>
-                <h3>系统框架</h3>
-                <p>Vision（OCR）、EventKit、WidgetKit、ActivityKit、UserNotifications、PhotosUI、App Intents、SPM。</p>
-            </div>
-            <div class="card">
-                <div class="card-icon cyan">&#127758;</div>
-                <h3>多语言本地化</h3>
-                <p>两款应用均支持 5 种语言。系统感知切换，手动覆写选项，本地化数字和日期格式。</p>
-            </div>
-            <div class="card">
-                <div class="card-icon indigo">&#128187;</div>
-                <h3>工具链</h3>
-                <p>Xcode、xcodebuild、SPM 包管理、JSON 持久化、CSV 导入导出、PDF 报告生成。</p>
-            </div>
-        </div>
-
-        <ul class="tech-list" style="margin-top:48px;" data-animate="fade-up">
-            <li>Swift 6.0</li>
-            <li>SwiftUI</li>
-            <li>Swift Charts</li>
-            <li>Vision OCR</li>
-            <li>HealthKit</li>
-            <li>EventKit</li>
-            <li>WidgetKit</li>
-            <li>ActivityKit</li>
-            <li>watchOS</li>
-            <li>MVVM</li>
-            <li>Strict Concurrency</li>
-            <li>SPM</li>
-            <li>JSON Persistence</li>
-        </ul>
-    </div>
-</section>
-
-<section class="section section-alt" id="contact">
-    <div class="section-inner">
-        <div class="section-label">联系</div>
-        <h2>联系我</h2>
-        <p class="section-desc">欢迎交流 iOS 开发、Swift 架构设计，或探讨合作可能。</p>
-
-        <ul class="contact-links" data-animate="fade-up">
-            <li><a href="mailto:DevChenkai@outlook.com"><span class="contact-icon">&#9993;</span> DevChenkai@outlook.com</a></li>
-            <li><a href="https://github.com/Gao-Chenkai" target="_blank" rel="noopener"><span class="contact-icon">&#9901;</span> GitHub</a></li>
-        </ul>
-    </div>
-</section>
-
-<footer class="footer">
-    <div class="footer-inner">
-        <div class="footer-col">
-            <h5>产品</h5>
-            <ul>
-                <li><a href="https://gao-chenkai.github.io/StudyPulse/" target="_blank" rel="noopener">StudyPulse</a></li>
-                <li><a href="https://gao-chenkai.github.io/GetAns/" target="_blank" rel="noopener">GetAns</a></li>
-            </ul>
-        </div>
-        <div class="footer-col">
-            <h5>关于作者</h5>
-            <ul>
-                <li><a href="https://gao-chenkai.github.io/" target="_blank" rel="noopener">Chenkai &mdash; 个人主页</a></li>
-            </ul>
-        </div>
-        <div class="footer-col">
-            <h5>源码</h5>
-            <ul>
-                <li><a href="https://github.com/Gao-Chenkai" target="_blank" rel="noopener">GitHub</a></li>
-                <li><a href="https://github.com/Gao-Chenkai/StudyPulse" target="_blank" rel="noopener">StudyPulse 源码</a></li>
-                <li><a href="https://github.com/Gao-Chenkai/GetAns" target="_blank" rel="noopener">GetAns 源码</a></li>
-            </ul>
-        </div>
-        <div class="footer-col">
-            <h5>联系</h5>
-            <ul>
-                <li><a href="mailto:DevChenkai@outlook.com">Email</a></li>
-            </ul>
-        </div>
-        <div class="footer-col">
-            <h5>许可</h5>
-            <ul>
-                <li><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/legalcode.zh-hans" target="_blank" rel="noopener">CC BY-NC SA 4.0</a></li>
-            </ul>
-        </div>
-    </div>
-    <div class="footer-bottom">
-        <span>&copy; 2026 Gao Chenkai</span>
-        <span>CC BY-NC-SA 4.0</span>
-    </div>
-</footer>
-
-<script src="js/animations.js"></script>
-
+    <script src="data/github-contributions.js?v=20260812" defer></script>
+    <script src="js/animations.js?v=20260812" defer></script>
 </body>
 </html>

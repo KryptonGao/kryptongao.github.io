@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>News | Gao Chenkai</title>
+    <meta name="description" content="Gao Chenkai 的近期动态。">
+    <link rel="icon" href="images/profile.jpg" type="image/jpeg">
+    <link rel="stylesheet" href="profile.css?v=20260812">
+</head>
+<body>
+    <svg class="icon-sprite" aria-hidden="true" focusable="false">
+        <symbol id="icon-home" viewBox="0 0 24 24"><path d="M3 10.8 12 3l9 7.8v8.7a1.5 1.5 0 0 1-1.5 1.5h-5v-6h-5v6h-5A1.5 1.5 0 0 1 3 19.5v-8.7Z"/></symbol>
+        <symbol id="icon-user" viewBox="0 0 24 24"><path d="M12 12a4.5 4.5 0 1 0 0-9 4.5 4.5 0 0 0 0 9Zm0 2c-4.4 0-8 2.4-8 5.4V21h16v-1.6c0-3-3.6-5.4-8-5.4Z"/></symbol>
+        <symbol id="icon-mail" viewBox="0 0 24 24"><path d="M3 5h18a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2Zm9 7.2L21 7H3l9 5.2ZM3 9.3V17h18V9.3l-9 5.2-9-5.2Z"/></symbol>
+        <symbol id="icon-github" viewBox="0 0 24 24"><path d="M12 2a10 10 0 0 0-3.2 19.5c.5.1.7-.2.7-.5v-1.8c-2.8.6-3.4-1.2-3.4-1.2-.5-1.2-1.1-1.5-1.1-1.5-.9-.6.1-.6.1-.6 1 0 1.5 1 1.5 1 .9 1.5 2.3 1.1 2.9.8.1-.6.4-1.1.7-1.3-2.2-.3-4.5-1.1-4.5-4.9 0-1.1.4-2 1-2.7-.1-.3-.4-1.3.1-2.7 0 0 .8-.3 2.8 1a9.7 9.7 0 0 1 5.1 0c2-1.3 2.8-1 2.8-1 .5 1.4.2 2.4.1 2.7.6.7 1 1.6 1 2.7 0 3.8-2.3 4.6-4.5 4.9.4.3.7.9.7 1.8V21c0 .3.2.6.7.5A10 10 0 0 0 12 2Z"/></symbol>
+        <symbol id="icon-news" viewBox="0 0 24 24"><path d="M5 3h12a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a3 3 0 0 1-3-3V6a3 3 0 0 1 3-3Zm0 2a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h12V5H5Zm3 3h6v2H8V8Zm0 4h6v2H8v-2Zm0 4h4v2H8v-2ZM21 7h1v12a2 2 0 0 1-2 2h-1v-2h1a0 0 0 0 0 0V7h1Z"/></symbol>
+        <symbol id="icon-sun" viewBox="0 0 24 24"><path d="M12 7a5 5 0 1 0 0 10 5 5 0 0 0 0-10Zm0-5h2v3h-2V2Zm0 17h2v3h-2v-3ZM2 11h3v2H2v-2Zm17 0h3v2h-3v-2ZM4.2 4.2l1.4-1.4 2.1 2.1-1.4 1.4-2.1-2.1Zm12.1 12.1 1.4-1.4 2.1 2.1-1.4 1.4-2.1-2.1ZM4.2 19.8l2.1-2.1 1.4 1.4-2.1 2.1-1.4-1.4Zm12.1-14.9 2.1-2.1 1.4 1.4-2.1 2.1-1.4-1.4Z"/></symbol>
+        <symbol id="icon-moon" viewBox="0 0 24 24"><path d="M20.4 15.2A8.7 8.7 0 0 1 8.8 3.6 9 9 0 1 0 20.4 15.2Z"/></symbol>
+        <symbol id="icon-menu" viewBox="0 0 24 24"><path d="M3 5h18v2H3V5Zm0 6h18v2H3v-2Zm0 6h18v2H3v-2Z"/></symbol>
+    </svg>
+
+    <header class="masthead">
+        <div class="masthead-inner">
+            <nav class="site-nav" aria-label="主导航">
+                <ul class="nav-links" id="primary-nav">
+                    <li><a href="index.html"><svg class="icon" aria-hidden="true"><use href="#icon-home"></use></svg><span>Home</span></a></li>
+                    <li><a href="about.html"><svg class="icon" aria-hidden="true"><use href="#icon-user"></use></svg><span>About</span></a></li>
+                    <li><a class="is-active" href="news.html"><svg class="icon" aria-hidden="true"><use href="#icon-news"></use></svg><span>News</span></a></li>
+                    <li><a href="contact.html"><svg class="icon" aria-hidden="true"><use href="#icon-mail"></use></svg><span>Contact</span></a></li>
+                </ul>
+                <div class="control-buttons">
+                    <button class="control-btn" id="theme-toggle" type="button" aria-label="切换主题" aria-pressed="false"><svg class="icon" aria-hidden="true"><use id="theme-icon" href="#icon-sun"></use></svg></button>
+                    <button class="nav-toggle" id="nav-toggle" type="button" aria-label="打开导航" aria-expanded="false" aria-controls="primary-nav"><svg class="icon" aria-hidden="true"><use href="#icon-menu"></use></svg></button>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <div class="internal-shell">
+        <main class="internal-main">
+            <div class="internal-callout">这里显示我在 GitHub 上的贡献记录：热力图来自贡献统计，下面的时间线展示近期公开活动。</div>
+
+            <section class="github-dashboard" aria-labelledby="github-dashboard-title">
+                <div class="github-dashboard-header">
+                    <div>
+                        <p class="github-kicker">GITHUB ACTIVITY</p>
+                        <h1 class="internal-section-title" id="github-dashboard-title">近期动态</h1>
+                    </div>
+                    <a class="github-profile-link" href="https://github.com/Gao-Chenkai" target="_blank" rel="noopener">View on GitHub <span aria-hidden="true">↗</span></a>
+                </div>
+
+                <div class="contribution-card" data-github-contribution-card>
+                    <div class="contribution-card-heading">
+                        <div>
+                            <p class="contribution-total" data-contribution-total>正在读取贡献统计…</p>
+                            <p class="contribution-caption">过去一年 · 公开贡献</p>
+                        </div>
+                        <span class="contribution-updated" data-contribution-updated>GraphQL snapshot</span>
+                    </div>
+
+                    <div class="contribution-calendar-scroll">
+                        <div class="contribution-calendar">
+                            <div class="contribution-months" data-contribution-months aria-hidden="true"></div>
+                            <div class="contribution-calendar-body">
+                                <div class="contribution-weekdays" aria-hidden="true">
+                                    <span></span><span>Mon</span><span></span><span>Wed</span><span></span><span>Fri</span><span></span>
+                                </div>
+                                <div class="contribution-grid" data-contribution-grid role="grid" aria-label="过去一年 GitHub 贡献日历"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="contribution-legend-row">
+                        <a href="https://docs.github.com/en/account-and-profile/concepts/contributions" target="_blank" rel="noopener">Learn how we count contributions</a>
+                        <span class="contribution-legend"><span>Less</span><span class="legend-cells" aria-hidden="true"><i data-level="0"></i><i data-level="1"></i><i data-level="2"></i><i data-level="3"></i><i data-level="4"></i></span><span>More</span></span>
+                    </div>
+
+                    <div class="contribution-overview">
+                        <div class="overview-copy">
+                            <h2>Activity overview</h2>
+                            <p data-overview-copy>正在整理贡献仓库…</p>
+                        </div>
+                        <div class="overview-stat-grid" aria-label="贡献分类统计">
+                            <div class="overview-stat"><strong data-contribution-stat="commits">—</strong><span>Commits</span></div>
+                            <div class="overview-stat"><strong data-contribution-stat="pullRequests">—</strong><span>Pull requests</span></div>
+                            <div class="overview-stat"><strong data-contribution-stat="issues">—</strong><span>Issues</span></div>
+                            <div class="overview-stat"><strong data-contribution-stat="reviews">—</strong><span>Reviews</span></div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="activity-section" data-github-timeline aria-labelledby="activity-title">
+                <div class="activity-section-heading">
+                    <h2 class="activity-section-title" id="activity-title">Contribution activity</h2>
+                    <span class="activity-source">公开 Events · 自动同步</span>
+                </div>
+                <div class="activity-timeline" data-activity-timeline aria-live="polite">
+                    <div class="timeline-loading">正在同步近期活动…</div>
+                </div>
+                <button class="activity-more" data-activity-more type="button" hidden>Show more activity</button>
+            </section>
+        </main>
+    </div>
+
+    <footer class="footer">
+        <p>&copy; 2026 Gao Chenkai · Last updated: August 2026</p>
+        <p>感谢来访</p>
+    </footer>
+
+    <script src="data/github-contributions.js?v=20260812" defer></script>
+    <script src="js/animations.js?v=20260812" defer></script>
+</body>
+</html>
