@@ -262,6 +262,177 @@ button { font: inherit; }
 
 .internal-main { min-width: 0; }
 
+.visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+.readme-shell {
+    width: min(calc(100% - 32px), 1200px);
+    padding: 32px 0 48px;
+}
+
+.readme-content {
+    --readme-accent: #2e8f86;
+    width: 100%;
+}
+
+.readme-hero {
+    display: block;
+    width: 100%;
+    height: auto;
+    border-radius: 28px;
+}
+
+.readme-links {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 0 10px;
+    margin: 18px 0 52px;
+    color: var(--muted);
+    font-size: 0.96rem;
+}
+
+.readme-content a {
+    color: var(--readme-accent);
+}
+
+.readme-content a:hover {
+    color: #d7765a;
+}
+
+.readme-section {
+    width: min(100%, 840px);
+    margin: 0 auto 44px;
+    scroll-margin-top: 80px;
+}
+
+.readme-section-title {
+    margin: 0 0 16px;
+    color: var(--text);
+    font-family: "IBM Plex Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    font-size: clamp(1.4rem, 2.4vw, 1.7rem);
+    font-weight: 700;
+    line-height: 1.3;
+    letter-spacing: -0.025em;
+}
+
+.readme-copy,
+.readme-list,
+.readme-link-line {
+    color: var(--body-text);
+    font-family: Lora, Georgia, "Times New Roman", "Songti SC", serif;
+    font-size: 1.02rem;
+    line-height: 1.8;
+    letter-spacing: 0.005em;
+}
+
+.readme-copy {
+    margin: 0;
+}
+
+.readme-copy + .readme-copy {
+    margin-top: 14px;
+}
+
+.readme-copy strong,
+.readme-list strong {
+    color: var(--text);
+    font-weight: 600;
+}
+
+.readme-list {
+    margin: 0;
+    padding-left: 1.5rem;
+}
+
+.readme-list li + li {
+    margin-top: 9px;
+}
+
+.readme-list li::marker {
+    color: var(--readme-accent);
+    font-weight: 700;
+}
+
+.readme-work-list a {
+    font-weight: 600;
+}
+
+.readme-social-links,
+.readme-tools {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.readme-social-links {
+    gap: 12px;
+}
+
+.readme-social-links a {
+    display: inline-flex;
+    align-items: center;
+    min-height: 30px;
+}
+
+.readme-social-links img {
+    display: block;
+    width: 40px;
+    height: 30px;
+}
+
+.readme-tools {
+    gap: 12px;
+}
+
+.readme-tools a {
+    display: block;
+    line-height: 0;
+    transition: transform 0.2s ease;
+}
+
+.readme-tools a:hover {
+    transform: translateY(-2px);
+}
+
+.readme-tools img {
+    display: block;
+    width: 40px;
+    height: 40px;
+}
+
+.readme-streak {
+    max-width: 100%;
+    margin: 24px 0 0;
+    overflow-x: auto;
+}
+
+.readme-streak img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+}
+
+.readme-link-line {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0 8px;
+    margin: 0;
+}
+
 .internal-callout {
     position: relative;
     margin: 0 0 30px;
@@ -950,6 +1121,13 @@ button { font: inherit; }
 
     .page-shell { display: block; padding-top: 32px; }
     .internal-shell { width: min(calc(100% - 28px), 560px); padding-top: 24px; }
+    .readme-shell { padding-top: 24px; padding-bottom: 36px; }
+    .readme-hero { border-radius: 18px; }
+    .readme-links { margin-bottom: 40px; }
+    .readme-section { margin-bottom: 36px; }
+    .readme-copy,
+    .readme-list,
+    .readme-link-line { font-size: 1rem; line-height: 1.75; }
     .sidebar {
         display: grid;
         grid-template-columns: 112px minmax(0, 1fr);
@@ -979,6 +1157,8 @@ button { font: inherit; }
     .profile-name { font-size: 1.2rem; }
     .news-list li { grid-template-columns: 1fr; gap: 2px; }
     .news-date { font-size: 0.8rem; }
+    .readme-hero { border-radius: 14px; }
+    .readme-tools { gap: 10px; }
     .contribution-card-heading { flex-direction: column; gap: 4px; }
     .contribution-updated { margin-top: 0; }
     .contribution-legend-row { align-items: flex-start; flex-direction: column; gap: 8px; }

@@ -18,7 +18,7 @@
 
     if (themeToggle) {
       themeToggle.setAttribute('aria-pressed', String(isDark));
-      themeToggle.setAttribute('aria-label', isDark ? '切换到浅色主题' : '切换到深色主题');
+      themeToggle.setAttribute('aria-label', isDark ? 'Switch to light theme' : 'Switch to dark theme');
     }
 
     if (themeIcon) {
@@ -172,9 +172,9 @@
         sortTime: event.created_at,
         count: commitCount,
         parts: [
-          makeTextPart('向 '),
+          makeTextPart('Pushed to '),
           makeLinkPart(repoName, repositoryUrl),
-          makeTextPart(' 推送了 ' + commitCount + ' 次提交')
+          makeTextPart(': ' + commitCount + (commitCount === 1 ? ' commit' : ' commits'))
         ]
       };
     }
@@ -185,13 +185,13 @@
         kind: 'create',
         date: date,
         sortTime: event.created_at,
-        parts: [makeTextPart('创建了仓库 '), makeLinkPart(repoName, repositoryUrl)]
+        parts: [makeTextPart('Created repository '), makeLinkPart(repoName, repositoryUrl)]
       };
     }
 
     if (event.type === 'PullRequestEvent' && payload.pull_request) {
       var pullRequest = payload.pull_request;
-      var pullRequestAction = getActionText(payload.action, '发起了', '完成了', '更新了');
+      var pullRequestAction = getActionText(payload.action, 'Opened', 'Completed', 'Updated');
       var pullRequestPage = pullRequest.html_url || (pullRequest.number
         ? 'https://github.com/' + repoName + '/pull/' + pullRequest.number
         : repositoryUrl);
@@ -204,7 +204,7 @@
         parts: [
           makeTextPart(pullRequestAction + ' '),
           makeLinkPart(repoName, repositoryUrl),
-          makeTextPart(' 的 Pull Request：'),
+          makeTextPart(' pull request: '),
           makeLinkPart(pullRequestTitle, pullRequestPage)
         ]
       };
@@ -221,9 +221,9 @@
         date: date,
         sortTime: event.created_at,
         parts: [
-          makeTextPart('参与了 '),
+          makeTextPart('Reviewed '),
           makeLinkPart(repoName, repositoryUrl),
-          makeTextPart(' 的 Pull Request 审查：'),
+          makeTextPart(' pull request: '),
           makeLinkPart(reviewedPullRequest.title || ('Pull Request #' + (reviewedPullRequest.number || '')), reviewedPullRequestPage)
         ]
       };
@@ -231,7 +231,7 @@
 
     if (event.type === 'IssuesEvent' && payload.issue) {
       var issue = payload.issue;
-      var issueAction = getActionText(payload.action, '创建了', '关闭了', '更新了');
+      var issueAction = getActionText(payload.action, 'Created', 'Closed', 'Updated');
       var issuePage = issue.html_url || (issue.number
         ? 'https://github.com/' + repoName + '/issues/' + issue.number
         : repositoryUrl);
@@ -243,7 +243,7 @@
         parts: [
           makeTextPart(issueAction + ' '),
           makeLinkPart(repoName, repositoryUrl),
-          makeTextPart(' 的 Issue：'),
+          makeTextPart(' issue: '),
           makeLinkPart(issue.title || ('Issue #' + (issue.number || '')), issuePage)
         ]
       };
@@ -260,9 +260,9 @@
         date: date,
         sortTime: event.created_at,
         parts: [
-          makeTextPart('评论了 '),
+          makeTextPart('Commented on '),
           makeLinkPart(repoName, repositoryUrl),
-          makeTextPart(' 的 Issue：'),
+          makeTextPart(' issue: '),
           makeLinkPart(commentedIssue.title || ('Issue #' + (commentedIssue.number || '')), commentedIssuePage)
         ]
       };
@@ -276,10 +276,10 @@
         date: date,
         sortTime: event.created_at,
         parts: [
-          makeTextPart('发布了 '),
+          makeTextPart('Released '),
           makeLinkPart(repoName, repositoryUrl),
-          makeTextPart(' 的版本 '),
-          makeLinkPart(release.tag_name || '未命名版本', release.html_url || repositoryUrl)
+          makeTextPart(' version '),
+          makeLinkPart(release.tag_name || 'Unnamed release', release.html_url || repositoryUrl)
         ]
       };
     }
@@ -291,7 +291,7 @@
         kind: 'fork',
         date: date,
         sortTime: event.created_at,
-        parts: [makeTextPart('复制了仓库 '), makeLinkPart(repoName, repositoryUrl)]
+        parts: [makeTextPart('Forked repository '), makeLinkPart(repoName, repositoryUrl)]
       };
     }
 
@@ -308,7 +308,7 @@
       var existing = grouped[activity.key];
       if (existing && activity.kind === 'push') {
         existing.count += activity.count;
-        existing.parts[2] = makeTextPart(' 推送了 ' + existing.count + ' 次提交');
+        existing.parts[2] = makeTextPart(': ' + existing.count + (existing.count === 1 ? ' commit' : ' commits'));
         return;
       }
 
@@ -1140,7 +1140,7 @@
     navToggle.addEventListener('click', function () {
       var isOpen = navLinks.classList.toggle('is-open');
       navToggle.setAttribute('aria-expanded', String(isOpen));
-      navToggle.setAttribute('aria-label', isOpen ? '关闭导航' : '打开导航');
+      navToggle.setAttribute('aria-label', isOpen ? 'Close navigation' : 'Open navigation');
     });
 
     navLinks.addEventListener('click', function (event) {

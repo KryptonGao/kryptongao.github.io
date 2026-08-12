@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg"
+     width="1200" height="400" viewBox="0 0 1200 400"
+     role="img" aria-labelledby="title desc">
+  <title id="title">Gao Chenkai — iOS developer, builder, and curious learner</title>
+  <desc id="desc">A warm editorial profile card introducing Gao Chenkai through his name, personality, and the ideas he enjoys making tangible.</desc>
+
+  <rect width="1200" height="400" rx="28" fill="#F6F2EA"/>
+  <path d="M52 86H1148M52 344H1148" stroke="#D9D4C9" stroke-width="1"/>
+  <path d="M52 48H232M52 48V78M968 352H1148M1148 322V352" stroke="#2E8F86" stroke-width="2"/>
+  <circle cx="1104" cy="74" r="6" fill="#D7765A"/>
+  <circle cx="1124" cy="74" r="6" fill="#E3B56B"/>
+
+  <g id="personal-introduction" transform="translate(68 54)">
+    <text x="0" y="0" fill="#2E8F86" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="18" font-weight="700" letter-spacing="2.4">PERSONAL README / 001</text>
+    <text x="0" y="94" fill="#17212A" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="74" font-weight="800" letter-spacing="-3">HI, I'M GAO.</text>
+    <text x="0" y="150" fill="#17212A" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="42" font-weight="650" letter-spacing="-1.4">I LIKE MAKING IDEAS</text>
+    <text x="0" y="198" fill="#17212A" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="42" font-weight="650" letter-spacing="-1.4">TANGIBLE.</text>
+    <rect x="0" y="228" width="80" height="5" rx="2.5" fill="#D7765A"/>
+    <text x="0" y="274" fill="#4D5A62" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="24" font-weight="550">iOS developer · builder · curious learner</text>
+    <text x="0" y="326" fill="#768078" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="18" letter-spacing="1.4">SMALL IDEAS · CAREFUL DETAILS · KEEP LEARNING</text>
+  </g>
+
+  <g id="personal-notes" transform="translate(790 60)">
+    <rect x="16" y="14" width="326" height="278" rx="18" fill="#E6D8C8" transform="rotate(4 179 153)"/>
+    <rect x="0" y="0" width="326" height="278" rx="18" fill="#E8F0EC" stroke="#BBD3CC" stroke-width="2"/>
+    <circle cx="58" cy="60" r="30" fill="#17212A"/>
+    <text x="58" y="70" text-anchor="middle" fill="#F6F2EA" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="27" font-weight="800">GC</text>
+    <text x="106" y="54" fill="#2E8F86" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="16" font-weight="700" letter-spacing="1.5">A LITTLE ABOUT ME</text>
+    <text x="106" y="78" fill="#596B68" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="17">curious by default</text>
+
+    <path d="M28 112H298" stroke="#BBD3CC" stroke-width="1"/>
+    <g id="make-note">
+      <rect x="28" y="132" width="8" height="38" rx="4" fill="#D7765A"/>
+      <text x="54" y="145" fill="#17212A" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="16" font-weight="700" letter-spacing="1.2">MAKE</text>
+      <text x="54" y="165" fill="#596B68" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="17">turn a thought into a real thing</text>
+    </g>
+    <g id="learn-note">
+      <rect x="28" y="184" width="8" height="38" rx="4" fill="#2E8F86"/>
+      <text x="54" y="197" fill="#17212A" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="16" font-weight="700" letter-spacing="1.2">LEARN</text>
+      <text x="54" y="217" fill="#596B68" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="17">stay curious, keep asking why</text>
+    </g>
+    <g id="notice-note">
+      <rect x="28" y="236" width="8" height="20" rx="4" fill="#E3B56B"/>
+      <text x="54" y="250" fill="#17212A" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="16" font-weight="700" letter-spacing="1.2">NOTICE</text>
+      <text x="54" y="270" fill="#596B68" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="17">care about the small details</text>
+    </g>
+  </g>
+</svg>
