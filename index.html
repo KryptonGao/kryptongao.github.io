@@ -4,8 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gao Chenkai | 个人主页</title>
-    <meta name="description" content="Gao Chenkai 的个人主页，记录个人介绍与近期动态。">
+    <meta name="description" content="Gao Chenkai 的个人主页，记录个人介绍。">
     <link rel="icon" href="images/profile.jpg" type="image/jpeg">
+    <link rel="stylesheet" href="profile.css?v=20260812">
     <style>
         *, *::before, *::after { box-sizing: border-box; }
 
@@ -265,6 +266,8 @@
         .closing { margin-top: 18px !important; }
 
         .content-section { scroll-margin-top: 80px; }
+
+        .home-github-dashboard { margin-top: 36px; }
 
         .section-title {
             margin: 30px 0 13px;
@@ -542,29 +545,63 @@
 
         <main class="page-content">
             <article id="about" class="content-section">
-                <p class="intro">你好，我是 Gao Chenkai。我习惯独自把一件事从想法做到可以被看见，也喜欢在忙碌之外，留一点时间观察生活。</p>
-                <p class="intro">我对新鲜事物保持兴趣，也接受真正重要的事情需要时间。比起把自己包装成一个已经完成的人，我更愿意诚实地记录正在经历的过程：做选择、反复修改、偶尔停下来，再继续往前走。</p>
-                <p class="intro">这个页面是我的一个小小的公开角落。不追求完整的履历，只放我愿意分享的近况，以及那些值得留下来的片段。</p>
+                <p class="intro">你好，我是 Gao Chenkai，一名独立创作者。我习惯独自把一件事从想法做到可以被看见，也喜欢在忙碌之外留一点时间观察生活，记录那些容易被忽略的细节。</p>
+                <p class="intro">我对新鲜事物保持兴趣，喜欢从问题出发，先弄清楚事情为什么值得做，再慢慢寻找合适的表达方式。写代码、做产品、整理文字，对我来说并不是彼此割裂的事情，它们都是把模糊的想法变得清晰、具体，并最终交到别人手里的过程。</p>
+                <p class="intro">我也接受真正重要的事情需要时间。比起把自己包装成一个已经完成的人，我更愿意诚实地记录正在经历的过程：做选择、反复修改、处理不够理想的结果，偶尔停下来，再继续往前走。</p>
+                <p class="intro">在创作时，我在意功能是否可靠，也在意一个细节能否让使用它的人感到自然、舒服。我愿意花时间打磨结构、文字和交互，因为好的作品不一定复杂，却应该清楚、耐看，并且能够真正解决一点问题。</p>
+                <p class="intro">这个页面是我的一个小小的公开角落。不追求完整的履历，只放我愿意分享的想法、近况，以及那些值得留下来的片段。希望这里不仅能记录我做过什么，也能留下我如何思考、如何工作，以及仍然在寻找什么。</p>
                 <p class="intro closing">如果你也在认真做自己的事，欢迎来信交流。</p>
-
-                <section id="news" class="content-section" aria-labelledby="news-title">
-                    <h2 class="section-title" id="news-title">近期动态</h2>
-                    <ul class="news-list github-activity" data-github-activity data-limit="3" aria-live="polite">
-                        <li class="activity-fallback">
-                            <span class="news-date">2026.08</span>
-                            <span>在 Gao-Chenkai/StudyPulse-Desktop、StudyPulse、Voyara 等仓库持续提交更新。</span>
-                        </li>
-                        <li class="activity-fallback">
-                            <span class="news-date">2026.08</span>
-                            <span>创建了 DeepTutor、Voyara 和 StudyPulse-Desktop 等仓库。</span>
-                        </li>
-                        <li class="activity-fallback">
-                            <span class="news-date">2026.08</span>
-                            <span>向 HKUDS/DeepTutor 提交了 Pull Request：fix(visualize): update iframe height when content shrinks。</span>
-                        </li>
-                    </ul>
-                </section>
             </article>
+
+            <section class="github-dashboard home-github-dashboard" aria-labelledby="home-github-title">
+                <div class="github-dashboard-header">
+                    <div>
+                        <p class="github-kicker">GITHUB CONTRIBUTIONS</p>
+                        <h2 class="internal-section-title" id="home-github-title">GitHub 贡献</h2>
+                    </div>
+                    <a class="github-profile-link" href="https://github.com/Gao-Chenkai" target="_blank" rel="noopener">View on GitHub <span aria-hidden="true">↗</span></a>
+                </div>
+
+                <div class="contribution-card" data-github-contribution-card>
+                    <div class="contribution-card-heading">
+                        <div>
+                            <p class="contribution-total" data-contribution-total>正在读取贡献统计…</p>
+                            <p class="contribution-caption">过去一年 · 公开贡献</p>
+                        </div>
+                        <span class="contribution-updated" data-contribution-updated>GraphQL snapshot</span>
+                    </div>
+
+                    <div class="contribution-calendar-scroll">
+                        <div class="contribution-calendar">
+                            <div class="contribution-months" data-contribution-months aria-hidden="true"></div>
+                            <div class="contribution-calendar-body">
+                                <div class="contribution-weekdays" aria-hidden="true">
+                                    <span></span><span>Mon</span><span></span><span>Wed</span><span></span><span>Fri</span><span></span>
+                                </div>
+                                <div class="contribution-grid" data-contribution-grid role="grid" aria-label="过去一年 GitHub 贡献日历"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="contribution-legend-row">
+                        <a href="https://docs.github.com/en/account-and-profile/concepts/contributions" target="_blank" rel="noopener">Learn how we count contributions</a>
+                        <span class="contribution-legend"><span>Less</span><span class="legend-cells" aria-hidden="true"><i data-level="0"></i><i data-level="1"></i><i data-level="2"></i><i data-level="3"></i><i data-level="4"></i></span><span>More</span></span>
+                    </div>
+
+                    <div class="contribution-overview">
+                        <div class="overview-copy">
+                            <h2>Activity overview</h2>
+                            <p data-overview-copy>正在整理贡献仓库…</p>
+                        </div>
+                        <div class="overview-stat-grid" aria-label="贡献分类统计">
+                            <div class="overview-stat"><strong data-contribution-stat="commits">—</strong><span>Commits</span></div>
+                            <div class="overview-stat"><strong data-contribution-stat="pullRequests">—</strong><span>Pull requests</span></div>
+                            <div class="overview-stat"><strong data-contribution-stat="issues">—</strong><span>Issues</span></div>
+                            <div class="overview-stat"><strong data-contribution-stat="reviews">—</strong><span>Reviews</span></div>
+                        </div>
+                    </div>
+                </div>
+            </section>
         </main>
     </div>
 
@@ -573,6 +610,7 @@
         <p>感谢来访</p>
     </footer>
 
+    <script src="data/github-contributions.js?v=20260812" defer></script>
     <script src="js/animations.js?v=20260812" defer></script>
 </body>
 </html>
