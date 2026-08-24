@@ -19,14 +19,14 @@ jobs:
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
-          gh api graphql -f query='query { user(login: "Gao-Chenkai") { contributionsCollection { contributionCalendar { totalContributions months { name year firstDay totalWeeks } weeks { firstDay contributionDays { color contributionCount date weekday } } } totalCommitContributions totalIssueContributions totalPullRequestContributions totalPullRequestReviewContributions totalRepositoriesWithContributedCommits totalRepositoriesWithContributedIssues totalRepositoriesWithContributedPullRequests totalRepositoryContributions commitContributionsByRepository(maxRepositories: 6) { repository { nameWithOwner url } contributions { totalCount } } } } }' --jq '.data.user.contributionsCollection' > /tmp/github-contributions.json
+          gh api graphql -f query='query { user(login: "KryptonGao") { contributionsCollection { contributionCalendar { totalContributions months { name year firstDay totalWeeks } weeks { firstDay contributionDays { color contributionCount date weekday } } } totalCommitContributions totalIssueContributions totalPullRequestContributions totalPullRequestReviewContributions totalRepositoriesWithContributedCommits totalRepositoriesWithContributedIssues totalRepositoriesWithContributedPullRequests totalRepositoryContributions commitContributionsByRepository(maxRepositories: 6) { repository { nameWithOwner url } contributions { totalCount } } } } }' --jq '.data.user.contributionsCollection' > /tmp/github-contributions.json
 
           node <<'NODE'
           const fs = require('node:fs');
           const source = JSON.parse(fs.readFileSync('/tmp/github-contributions.json', 'utf8'));
           const compact = {
             generatedAt: new Date().toISOString().slice(0, 10),
-            user: 'Gao-Chenkai',
+            user: 'KryptonGao',
             calendar: {
               totalContributions: source.contributionCalendar.totalContributions,
               months: source.contributionCalendar.months,

@@ -3,10 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact | Gao Chenkai</title>
-    <meta name="description" content="Get in touch with Gao Chenkai.">
+    <title>Contact — Gao Chenkai</title>
+    <meta name="description" content="Get in touch with Gao Chenkai — email, GitHub, X, or Instagram. A simple hello is always welcome.">
+    <meta name="author" content="Gao Chenkai">
+    <meta name="theme-color" content="#FAFAF7" media="(prefers-color-scheme: light)">
+    <meta name="theme-color" content="#0E1014" media="(prefers-color-scheme: dark)">
+
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Contact — Gao Chenkai">
+    <meta property="og:description" content="Get in touch — email, GitHub, X, or Instagram. A simple hello is always welcome.">
+    <meta property="og:image" content="images/profile-hero.svg">
+    <meta property="og:url" content="https://gao-chenkai.github.io/contact.html">
+
     <link rel="icon" href="images/profile.jpg" type="image/jpeg">
-    <link rel="stylesheet" href="profile.css?v=20260812">
+    <link rel="canonical" href="https://gao-chenkai.github.io/contact.html">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="profile.css?v=20260824">
 </head>
 <body>
     <svg class="icon-sprite" aria-hidden="true" focusable="false">
@@ -18,11 +33,17 @@
         <symbol id="icon-sun" viewBox="0 0 24 24"><path d="M12 7a5 5 0 1 0 0 10 5 5 0 0 0 0-10Zm0-5h2v3h-2V2Zm0 17h2v3h-2v-3ZM2 11h3v2H2v-2Zm17 0h3v2h-3v-2ZM4.2 4.2l1.4-1.4 2.1 2.1-1.4 1.4-2.1-2.1Zm12.1 12.1 1.4-1.4 2.1 2.1-1.4 1.4-2.1-2.1ZM4.2 19.8l2.1-2.1 1.4 1.4-2.1 2.1-1.4-1.4Zm12.1-14.9 2.1-2.1 1.4 1.4-2.1 2.1-1.4-1.4Z"/></symbol>
         <symbol id="icon-moon" viewBox="0 0 24 24"><path d="M20.4 15.2A8.7 8.7 0 0 1 8.8 3.6 9 9 0 1 0 20.4 15.2Z"/></symbol>
         <symbol id="icon-menu" viewBox="0 0 24 24"><path d="M3 5h18v2H3V5Zm0 6h18v2H3v-2Zm0 6h18v2H3v-2Z"/></symbol>
+        <symbol id="icon-arrow" viewBox="0 0 24 24"><path d="M7 17 17 7M17 7H9M17 7v8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
     </svg>
+
+    <div class="scroll-progress" aria-hidden="true"></div>
 
     <header class="masthead">
         <div class="masthead-inner">
             <nav class="site-nav" aria-label="Primary navigation">
+                <a class="wordmark" href="index.html" aria-label="Gao Chenkai — home">
+                    Gao<b>.</b>Chenkai <span>/ Krypton</span>
+                </a>
                 <ul class="nav-links" id="primary-nav">
                     <li><a href="index.html"><svg class="icon" aria-hidden="true"><use href="#icon-home"></use></svg><span>Home</span></a></li>
                     <li><a href="about.html"><svg class="icon" aria-hidden="true"><use href="#icon-user"></use></svg><span>About</span></a></li>
@@ -37,29 +58,69 @@
         </div>
     </header>
 
-    <div class="internal-shell">
-        <main class="internal-main">
-            <div class="internal-callout">If you would like to get in touch, feel free to write. A simple hello is always welcome.</div>
-            <section class="internal-section">
-                <h1 class="internal-section-title">Contact</h1>
-                <p class="internal-copy">Whether you want to share an update, exchange ideas, or talk about something you have been exploring, you can reach me below.</p>
-                <ul class="contact-list">
-                    <li><a href="mailto:DevChenkai@outlook.com"><svg class="icon" aria-hidden="true"><use href="#icon-mail"></use></svg><span>DevChenkai@outlook.com</span></a></li>
-                    <li><a href="https://github.com/Gao-Chenkai" target="_blank" rel="noopener"><svg class="icon" aria-hidden="true"><use href="#icon-github"></use></svg><span>GitHub</span></a></li>
-                </ul>
-            </section>
-            <section class="internal-section">
-                <h2 class="internal-section-title">Things to talk about</h2>
-                <p class="internal-copy">Recent life, ongoing projects, unexpected discoveries, or anything else you think is worth exploring.</p>
-            </section>
-        </main>
+    <div class="shell" style="padding-top:var(--space-9);padding-bottom:var(--space-9);">
+        <div class="section-head" data-reveal style="margin-bottom:var(--space-7);">
+            <span class="section-index">Contact</span>
+            <div>
+                <h1 class="section-title">Say hello.</h1>
+                <p class="section-sub">If you enjoy thoughtful apps, learning in public, or turning a blank page into a working prototype — a simple hello is always welcome.</p>
+            </div>
+        </div>
+
+        <div class="contact-grid" data-reveal-stagger>
+            <a class="contact-card" href="mailto:DevChenkai@outlook.com">
+                <svg class="icon" aria-hidden="true"><use href="#icon-mail"></use></svg>
+                <span class="contact-card-label">Email</span>
+                <span class="contact-card-value">DevChenkai@outlook.com</span>
+            </a>
+            <a class="contact-card" href="https://github.com/KryptonGao" target="_blank" rel="noopener">
+                <svg class="icon" aria-hidden="true"><use href="#icon-github"></use></svg>
+                <span class="contact-card-label">GitHub</span>
+                <span class="contact-card-value">KryptonGao ↗</span>
+            </a>
+            <a class="contact-card" href="https://x.com/KryptonGao" target="_blank" rel="noopener">
+                <svg class="icon" aria-hidden="true"><use href="#icon-arrow"></use></svg>
+                <span class="contact-card-label">X / Twitter</span>
+                <span class="contact-card-value">@KryptonGao ↗</span>
+            </a>
+            <a class="contact-card" href="https://instagram.com/kryptongao5525" target="_blank" rel="noopener">
+                <svg class="icon" aria-hidden="true"><use href="#icon-arrow"></use></svg>
+                <span class="contact-card-label">Instagram</span>
+                <span class="contact-card-value">@kryptongao5525 ↗</span>
+            </a>
+        </div>
+
+        <section class="about-block" style="margin-top:var(--space-9);" data-reveal>
+            <span class="about-block-num">·</span>
+            <div>
+                <h2>Things to talk about</h2>
+                <p class="readme-copy">Recent life, ongoing projects, unexpected discoveries, or anything else you think is worth exploring. Whether you want to share an update, exchange ideas, or talk about something you’ve been exploring — feel free to write.</p>
+            </div>
+        </section>
     </div>
 
     <footer class="footer">
-        <p>&copy; 2026 Gao Chenkai · Last updated: August 2026</p>
-        <p>Thanks for visiting</p>
+        <div class="footer-inner">
+            <div class="footer-brand">
+                <a class="wordmark" href="index.html">Gao<b>.</b>Chenkai</a>
+                <p>Making ideas tangible — one small, careful, working thing at a time.</p>
+            </div>
+            <ul class="footer-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="news.html">News</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="https://github.com/KryptonGao" target="_blank" rel="noopener">GitHub ↗</a></li>
+                <li><a href="https://x.com/KryptonGao" target="_blank" rel="noopener">X ↗</a></li>
+                <li><a href="mailto:DevChenkai@outlook.com">Email</a></li>
+            </ul>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Gao Chenkai · Built in public</p>
+            <p>Last updated · August 2026</p>
+        </div>
     </footer>
 
-    <script src="js/animations.js?v=20260812" defer></script>
+    <script src="js/animations.js?v=20260824" defer></script>
 </body>
 </html>

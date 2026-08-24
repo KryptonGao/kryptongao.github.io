@@ -3,10 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>News | Gao Chenkai</title>
-    <meta name="description" content="Recent GitHub activity from Gao Chenkai.">
+    <title>News — Gao Chenkai, building in public</title>
+    <meta name="description" content="Gao Chenkai’s GitHub activity signal — a contribution calendar and recent public activity timeline, auto-synced from GitHub.">
+    <meta name="author" content="Gao Chenkai">
+    <meta name="theme-color" content="#FAFAF7" media="(prefers-color-scheme: light)">
+    <meta name="theme-color" content="#0E1014" media="(prefers-color-scheme: dark)">
+
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="News — Gao Chenkai, building in public">
+    <meta property="og:description" content="GitHub contribution calendar and recent public activity timeline.">
+    <meta property="og:image" content="images/profile-hero.svg">
+    <meta property="og:url" content="https://gao-chenkai.github.io/news.html">
+
     <link rel="icon" href="images/profile.jpg" type="image/jpeg">
-    <link rel="stylesheet" href="profile.css?v=20260812">
+    <link rel="canonical" href="https://gao-chenkai.github.io/news.html">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="profile.css?v=20260824">
 </head>
 <body>
     <svg class="icon-sprite" aria-hidden="true" focusable="false">
@@ -18,11 +33,17 @@
         <symbol id="icon-sun" viewBox="0 0 24 24"><path d="M12 7a5 5 0 1 0 0 10 5 5 0 0 0 0-10Zm0-5h2v3h-2V2Zm0 17h2v3h-2v-3ZM2 11h3v2H2v-2Zm17 0h3v2h-3v-2ZM4.2 4.2l1.4-1.4 2.1 2.1-1.4 1.4-2.1-2.1Zm12.1 12.1 1.4-1.4 2.1 2.1-1.4 1.4-2.1-2.1ZM4.2 19.8l2.1-2.1 1.4 1.4-2.1 2.1-1.4-1.4Zm12.1-14.9 2.1-2.1 1.4 1.4-2.1 2.1-1.4-1.4Z"/></symbol>
         <symbol id="icon-moon" viewBox="0 0 24 24"><path d="M20.4 15.2A8.7 8.7 0 0 1 8.8 3.6 9 9 0 1 0 20.4 15.2Z"/></symbol>
         <symbol id="icon-menu" viewBox="0 0 24 24"><path d="M3 5h18v2H3V5Zm0 6h18v2H3v-2Zm0 6h18v2H3v-2Z"/></symbol>
+        <symbol id="icon-arrow" viewBox="0 0 24 24"><path d="M7 17 17 7M17 7H9M17 7v8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
     </svg>
+
+    <div class="scroll-progress" aria-hidden="true"></div>
 
     <header class="masthead">
         <div class="masthead-inner">
             <nav class="site-nav" aria-label="Primary navigation">
+                <a class="wordmark" href="index.html" aria-label="Gao Chenkai — home">
+                    Gao<b>.</b>Chenkai <span>/ Krypton</span>
+                </a>
                 <ul class="nav-links" id="primary-nav">
                     <li><a href="index.html"><svg class="icon" aria-hidden="true"><use href="#icon-home"></use></svg><span>Home</span></a></li>
                     <li><a href="about.html"><svg class="icon" aria-hidden="true"><use href="#icon-user"></use></svg><span>About</span></a></li>
@@ -37,79 +58,102 @@
         </div>
     </header>
 
-    <div class="internal-shell">
-        <main class="internal-main">
-            <div class="internal-callout">This page shows my GitHub contributions. The calendar comes from contribution stats, and the timeline highlights recent public activity.</div>
+    <div class="shell" style="padding-top:var(--space-8);padding-bottom:var(--space-5);">
+        <div class="section-head" data-reveal style="margin-bottom:var(--space-5);">
+            <span class="section-index">News / Activity signal</span>
+            <div>
+                <h1 class="section-title">Building in public.</h1>
+                <p class="section-sub">A contribution calendar and a timeline of recent public activity — the calendar is a GraphQL snapshot, the timeline auto-syncs from the GitHub API and falls back to the local snapshot when needed.</p>
+            </div>
+        </div>
+    </div>
 
-            <section class="github-dashboard" aria-labelledby="github-dashboard-title">
-                <div class="github-dashboard-header">
+    <div class="shell" style="padding-bottom:var(--space-9);">
+        <section class="github-dashboard" aria-labelledby="github-dashboard-title" data-reveal>
+            <div class="github-dashboard-header">
+                <div>
+                    <p class="github-kicker">GitHub contributions</p>
+                    <h2 class="internal-section-title" id="github-dashboard-title">Contribution calendar</h2>
+                </div>
+                <a class="github-profile-link" href="https://github.com/KryptonGao" target="_blank" rel="noopener">View on GitHub <span aria-hidden="true">↗</span></a>
+            </div>
+
+            <div class="contribution-card" data-github-contribution-card>
+                <div class="contribution-card-heading">
                     <div>
-                        <p class="github-kicker">GITHUB ACTIVITY</p>
-                        <h1 class="internal-section-title" id="github-dashboard-title">Recent activity</h1>
+                        <p class="contribution-total" data-contribution-total>Loading contribution stats…</p>
+                        <p class="contribution-caption">Past year · public contributions</p>
                     </div>
-                    <a class="github-profile-link" href="https://github.com/Gao-Chenkai" target="_blank" rel="noopener">View on GitHub <span aria-hidden="true">↗</span></a>
+                    <span class="contribution-updated" data-contribution-updated>GraphQL snapshot</span>
                 </div>
 
-                <div class="contribution-card" data-github-contribution-card>
-                    <div class="contribution-card-heading">
-                        <div>
-                            <p class="contribution-total" data-contribution-total>Loading contribution stats…</p>
-                            <p class="contribution-caption">Past year · public contributions</p>
-                        </div>
-                        <span class="contribution-updated" data-contribution-updated>GraphQL snapshot</span>
-                    </div>
-
-                    <div class="contribution-calendar-scroll">
-                        <div class="contribution-calendar">
-                            <div class="contribution-months" data-contribution-months aria-hidden="true"></div>
-                            <div class="contribution-calendar-body">
-                                <div class="contribution-weekdays" aria-hidden="true">
-                                    <span></span><span>Mon</span><span></span><span>Wed</span><span></span><span>Fri</span><span></span>
-                                </div>
-                                <div class="contribution-grid" data-contribution-grid role="grid" aria-label="GitHub contribution calendar for the past year"></div>
+                <div class="contribution-calendar-scroll">
+                    <div class="contribution-calendar">
+                        <div class="contribution-months" data-contribution-months aria-hidden="true"></div>
+                        <div class="contribution-calendar-body">
+                            <div class="contribution-weekdays" aria-hidden="true">
+                                <span></span><span>Mon</span><span></span><span>Wed</span><span></span><span>Fri</span><span></span>
                             </div>
-                        </div>
-                    </div>
-
-                    <div class="contribution-legend-row">
-                        <a href="https://docs.github.com/en/account-and-profile/concepts/contributions" target="_blank" rel="noopener">Learn how we count contributions</a>
-                        <span class="contribution-legend"><span>Less</span><span class="legend-cells" aria-hidden="true"><i data-level="0"></i><i data-level="1"></i><i data-level="2"></i><i data-level="3"></i><i data-level="4"></i></span><span>More</span></span>
-                    </div>
-
-                    <div class="contribution-overview">
-                        <div class="overview-copy">
-                            <h2>Activity overview</h2>
-                            <p data-overview-copy>Preparing repository summary…</p>
-                        </div>
-                        <div class="overview-stat-grid" aria-label="Contribution category statistics">
-                            <div class="overview-stat"><strong data-contribution-stat="commits">—</strong><span>Commits</span></div>
-                            <div class="overview-stat"><strong data-contribution-stat="pullRequests">—</strong><span>Pull requests</span></div>
-                            <div class="overview-stat"><strong data-contribution-stat="issues">—</strong><span>Issues</span></div>
-                            <div class="overview-stat"><strong data-contribution-stat="reviews">—</strong><span>Reviews</span></div>
+                            <div class="contribution-grid" data-contribution-grid role="grid" aria-label="GitHub contribution calendar for the past year"></div>
                         </div>
                     </div>
                 </div>
-            </section>
 
-            <section class="activity-section" data-github-timeline aria-labelledby="activity-title">
-                <div class="activity-section-heading">
-                    <h2 class="activity-section-title" id="activity-title">Contribution activity</h2>
-                    <span class="activity-source">Public events · Auto-synced</span>
+                <div class="contribution-legend-row">
+                    <a href="https://docs.github.com/en/account-and-profile/concepts/contributions" target="_blank" rel="noopener">Learn how we count contributions</a>
+                    <span class="contribution-legend"><span>Less</span><span class="legend-cells" aria-hidden="true"><i data-level="0"></i><i data-level="1"></i><i data-level="2"></i><i data-level="3"></i><i data-level="4"></i></span><span>More</span></span>
                 </div>
-                <div class="activity-timeline" data-activity-timeline aria-live="polite">
-                    <div class="timeline-loading">Syncing recent activity…</div>
+
+                <div class="contribution-overview">
+                    <div class="overview-copy">
+                        <h2>Activity overview</h2>
+                        <p data-overview-copy>Preparing repository summary…</p>
+                    </div>
+                    <div class="overview-stat-grid" aria-label="Contribution category statistics">
+                        <div class="overview-stat"><strong data-contribution-stat="commits">—</strong><span>Commits</span></div>
+                        <div class="overview-stat"><strong data-contribution-stat="pullRequests">—</strong><span>Pull requests</span></div>
+                        <div class="overview-stat"><strong data-contribution-stat="issues">—</strong><span>Issues</span></div>
+                        <div class="overview-stat"><strong data-contribution-stat="reviews">—</strong><span>Reviews</span></div>
+                    </div>
                 </div>
-                <button class="activity-more" data-activity-more type="button" hidden>Show more activity</button>
-            </section>
-        </main>
+            </div>
+        </section>
+
+        <section class="activity-section" data-github-timeline aria-labelledby="activity-title" data-reveal>
+            <div class="activity-section-heading">
+                <h2 class="activity-section-title" id="activity-title">Contribution activity</h2>
+                <span class="activity-source">Public events · Auto-synced</span>
+            </div>
+            <div class="activity-timeline" data-activity-timeline aria-live="polite">
+                <div class="timeline-loading">Syncing recent activity…</div>
+            </div>
+            <button class="activity-more" data-activity-more type="button" hidden>Show more activity</button>
+        </section>
     </div>
 
     <footer class="footer">
-        <p>&copy; 2026 Gao Chenkai · Last updated: August 2026</p>
-        <p>Thanks for visiting</p>
+        <div class="footer-inner">
+            <div class="footer-brand">
+                <a class="wordmark" href="index.html">Gao<b>.</b>Chenkai</a>
+                <p>Making ideas tangible — one small, careful, working thing at a time.</p>
+            </div>
+            <ul class="footer-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="news.html">News</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="https://github.com/KryptonGao" target="_blank" rel="noopener">GitHub ↗</a></li>
+                <li><a href="https://x.com/KryptonGao" target="_blank" rel="noopener">X ↗</a></li>
+                <li><a href="mailto:DevChenkai@outlook.com">Email</a></li>
+            </ul>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Gao Chenkai · Built in public</p>
+            <p>Last updated · August 2026</p>
+        </div>
     </footer>
 
-    <script src="data/github-contributions.js?v=20260812" defer></script>
-    <script src="js/animations.js?v=20260812" defer></script>
+    <script src="data/github-contributions.js?v=20260824" defer></script>
+    <script src="js/animations.js?v=20260824" defer></script>
 </body>
 </html>

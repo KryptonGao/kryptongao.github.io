@@ -3,10 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gao Chenkai | iOS developer, builder, and curious learner</title>
-    <meta name="description" content="Gao Chenkai — iOS developer, builder, and curious learner who enjoys making ideas tangible.">
+    <title>About — Gao Chenkai, iOS developer & builder</title>
+    <meta name="description" content="About Gao Chenkai (Krypton) — an iOS developer, builder, and curious learner. What I’m doing, what I care about, and the tools I use.">
+    <meta name="author" content="Gao Chenkai">
+    <meta name="theme-color" content="#FAFAF7" media="(prefers-color-scheme: light)">
+    <meta name="theme-color" content="#0E1014" media="(prefers-color-scheme: dark)">
+
+    <meta property="og:type" content="profile">
+    <meta property="og:title" content="About — Gao Chenkai">
+    <meta property="og:description" content="iOS developer, builder, and curious learner. What I’m doing, what I care about, and the tools I use.">
+    <meta property="og:image" content="images/profile-hero.svg">
+    <meta property="og:url" content="https://gao-chenkai.github.io/about.html">
+
     <link rel="icon" href="images/profile.jpg" type="image/jpeg">
-    <link rel="stylesheet" href="profile.css?v=20260812">
+    <link rel="canonical" href="https://gao-chenkai.github.io/about.html">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="profile.css?v=20260824">
 </head>
 <body>
     <svg class="icon-sprite" aria-hidden="true" focusable="false">
@@ -18,11 +33,17 @@
         <symbol id="icon-sun" viewBox="0 0 24 24"><path d="M12 7a5 5 0 1 0 0 10 5 5 0 0 0 0-10Zm0-5h2v3h-2V2Zm0 17h2v3h-2v-3ZM2 11h3v2H2v-2Zm17 0h3v2h-3v-2ZM4.2 4.2l1.4-1.4 2.1 2.1-1.4 1.4-2.1-2.1Zm12.1 12.1 1.4-1.4 2.1 2.1-1.4 1.4-2.1-2.1ZM4.2 19.8l2.1-2.1 1.4 1.4-2.1 2.1-1.4-1.4Zm12.1-14.9 2.1-2.1 1.4 1.4-2.1 2.1-1.4-1.4Z"/></symbol>
         <symbol id="icon-moon" viewBox="0 0 24 24"><path d="M20.4 15.2A8.7 8.7 0 0 1 8.8 3.6 9 9 0 1 0 20.4 15.2Z"/></symbol>
         <symbol id="icon-menu" viewBox="0 0 24 24"><path d="M3 5h18v2H3V5Zm0 6h18v2H3v-2Zm0 6h18v2H3v-2Z"/></symbol>
+        <symbol id="icon-arrow" viewBox="0 0 24 24"><path d="M7 17 17 7M17 7H9M17 7v8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
     </svg>
+
+    <div class="scroll-progress" aria-hidden="true"></div>
 
     <header class="masthead">
         <div class="masthead-inner">
             <nav class="site-nav" aria-label="Primary navigation">
+                <a class="wordmark" href="index.html" aria-label="Gao Chenkai — home">
+                    Gao<b>.</b>Chenkai <span>/ Krypton</span>
+                </a>
                 <ul class="nav-links" id="primary-nav">
                     <li><a href="index.html"><svg class="icon" aria-hidden="true"><use href="#icon-home"></use></svg><span>Home</span></a></li>
                     <li><a class="is-active" href="about.html"><svg class="icon" aria-hidden="true"><use href="#icon-user"></use></svg><span>About</span></a></li>
@@ -37,15 +58,15 @@
         </div>
     </header>
 
-    <div class="internal-shell readme-shell">
-        <main class="internal-main readme-main">
+    <div class="readme-shell">
+        <main class="readme-main">
             <article class="readme-content">
                 <h1 class="visually-hidden">Gao Chenkai — iOS developer, builder, and curious learner</h1>
 
-                <img class="readme-hero" src="images/profile-hero.svg" alt="Gao Chenkai — iOS developer, builder, and curious learner who enjoys making ideas tangible." width="1200" height="400">
+                <img class="readme-hero" src="images/profile-hero.svg" alt="Editorial profile card: Gao Chenkai — iOS developer who likes making ideas tangible." width="1200" height="400" data-reveal>
 
-                <nav class="readme-links" aria-label="Profile links">
-                    <a href="https://github.com/Gao-Chenkai" target="_blank" rel="noopener">GitHub</a>
+                <nav class="readme-links" aria-label="Profile links" data-reveal>
+                    <a href="https://github.com/KryptonGao" target="_blank" rel="noopener">GitHub</a>
                     <span aria-hidden="true">·</span>
                     <a href="https://gao-chenkai.github.io/" target="_blank" rel="noopener">Portfolio</a>
                     <span aria-hidden="true">·</span>
@@ -54,89 +75,110 @@
                     <a href="mailto:DevChenkai@outlook.com">Email</a>
                 </nav>
 
-                <section class="readme-section" aria-labelledby="about-me-title">
-                    <h2 class="readme-section-title" id="about-me-title">About me</h2>
-                    <p class="readme-copy">Hi, I’m <strong>Gao Chenkai</strong> — you may also know me as <strong>Krypton</strong>. I’m an iOS developer, a curious builder, and someone who enjoys taking a complicated idea and finding its smallest useful shape.</p>
-                    <p class="readme-copy">I like making things that feel clear and human: starting from a rough thought, learning whatever the problem requires, and gradually turning it into something real. I’m especially drawn to apps that help people learn, plan, reflect, or make better use of their time.</p>
-                </section>
+                <p class="lead" data-reveal style="font-size:clamp(1.4rem,3vw,2rem);max-width:24ch;margin:0 auto var(--space-8);text-align:center;">I like taking a complicated idea and finding its smallest useful shape.</p>
 
-                <section class="readme-section" aria-labelledby="up-to-title">
-                    <h2 class="readme-section-title" id="up-to-title">What I’ve been up to</h2>
-                    <ul class="readme-list">
-                        <li>Building apps for Apple platforms and experimenting with ideas that can grow beyond a single screen or device.</li>
-                        <li>Extending that work into desktop experiences and supporting services as the product needs them.</li>
-                        <li>Learning Rust and TypeScript by using them to solve real problems, not just by collecting another list of tools.</li>
-                        <li>Looking for thoughtful people to collaborate with on small products, learning tools, and AI-assisted workflows.</li>
-                    </ul>
-                </section>
+                <div data-reveal-stagger>
+                    <section class="about-block" aria-labelledby="about-me-title">
+                        <span class="about-block-num">01</span>
+                        <div>
+                            <h2 id="about-me-title">About me</h2>
+                            <p class="readme-copy">Hi, I’m <strong>Gao Chenkai</strong> — you may also know me as <strong>Krypton</strong>. I’m an iOS developer, a curious builder, and someone who enjoys taking a complicated idea and finding its smallest useful shape.</p>
+                            <p class="readme-copy">I like making things that feel clear and human: starting from a rough thought, learning whatever the problem requires, and gradually turning it into something real. I’m especially drawn to apps that help people learn, plan, reflect, or make better use of their time.</p>
+                        </div>
+                    </section>
 
-                <section class="readme-section" aria-labelledby="care-title">
-                    <h2 class="readme-section-title" id="care-title">A few things I care about</h2>
-                    <ul class="readme-list">
-                        <li><strong>Make it understandable.</strong> Good software should explain what it is doing.</li>
-                        <li><strong>Keep it useful.</strong> A small working foundation is better than a grand unfinished idea.</li>
-                        <li><strong>Leave room for people.</strong> Automation should be visible, reviewable, and easy to change.</li>
-                        <li><strong>Keep learning.</strong> I enjoy following a question far enough to build something with the answer.</li>
-                    </ul>
-                </section>
+                    <section class="about-block" aria-labelledby="up-to-title">
+                        <span class="about-block-num">02</span>
+                        <div>
+                            <h2 id="up-to-title">What I’ve been up to</h2>
+                            <ul class="readme-list">
+                                <li>Building apps for Apple platforms and experimenting with ideas that can grow beyond a single screen or device.</li>
+                                <li>Extending that work into desktop experiences and supporting services as the product needs them.</li>
+                                <li>Learning Rust and TypeScript by using them to solve real problems, not just by collecting another list of tools.</li>
+                                <li>Looking for thoughtful people to collaborate with on small products, learning tools, and AI-assisted workflows.</li>
+                            </ul>
+                        </div>
+                    </section>
 
-                <section class="readme-section" aria-labelledby="work-title">
-                    <h2 class="readme-section-title" id="work-title">Selected work</h2>
-                    <p class="readme-copy">These are a few of the things I’ve been building and learning through:</p>
-                    <ul class="readme-list readme-work-list">
-                        <li><a href="https://github.com/Gao-Chenkai/StudyPulse" target="_blank" rel="noopener"><strong>StudyPulse</strong></a> — a learning companion for iPhone and iPad, bringing study records, review, focus, and reflection into one place.</li>
-                        <li><a href="https://github.com/Gao-Chenkai/Voyara" target="_blank" rel="noopener"><strong>Voyara</strong></a> — a travel-planning app built around local trips, maps, daily activities, and user-confirmed suggestions.</li>
-                        <li><a href="https://github.com/Gao-Chenkai/StudyPulse-Desktop" target="_blank" rel="noopener"><strong>StudyPulse-Desktop</strong></a> — a desktop workspace that carries the StudyPulse idea onto macOS and Windows.</li>
-                        <li><a href="https://github.com/Gao-Chenkai/StudyPulseCloudAI" target="_blank" rel="noopener"><strong>StudyPulseCloudAI</strong></a> — an optional service layer for AI-powered StudyPulse features.</li>
-                    </ul>
-                </section>
+                    <section class="about-block" aria-labelledby="care-title">
+                        <span class="about-block-num">03</span>
+                        <div>
+                            <h2 id="care-title">A few things I care about</h2>
+                            <ul class="readme-list">
+                                <li><strong>Make it understandable.</strong> Good software should explain what it is doing.</li>
+                                <li><strong>Keep it useful.</strong> A small working foundation is better than a grand unfinished idea.</li>
+                                <li><strong>Leave room for people.</strong> Automation should be visible, reviewable, and easy to change.</li>
+                                <li><strong>Keep learning.</strong> I enjoy following a question far enough to build something with the answer.</li>
+                            </ul>
+                        </div>
+                    </section>
 
-                <section class="readme-section" aria-labelledby="connect-title">
-                    <h2 class="readme-section-title" id="connect-title">Connect with me</h2>
-                    <ul class="readme-social-links">
-                        <li><a href="https://github.com/Gao-Chenkai" target="_blank" rel="noopener"><img src="https://raw.githubusercontent.com/rahuldkjain/github-profile-readme-generator/master/src/images/icons/Social/github.svg" alt="Gao-Chenkai on GitHub" width="40" height="30" loading="lazy"></a></li>
-                        <li><a href="https://instagram.com/kryptongao5525" target="_blank" rel="noopener"><img src="https://raw.githubusercontent.com/rahuldkjain/github-profile-readme-generator/master/src/images/icons/Social/instagram.svg" alt="Krypton5525 on Instagram" width="40" height="30" loading="lazy"></a></li>
-                        <li><a href="https://x.com/KryptonGao" target="_blank" rel="noopener"><img src="https://raw.githubusercontent.com/rahuldkjain/github-profile-readme-generator/master/src/images/icons/Social/twitter.svg" alt="KryptonGao on X" width="40" height="30" loading="lazy"></a></li>
-                    </ul>
-                </section>
+                    <section class="about-block" aria-labelledby="tools-title">
+                        <span class="about-block-num">04</span>
+                        <div>
+                            <h2 id="tools-title">Languages and tools</h2>
+                            <ul class="readme-tools" aria-label="Languages and tools">
+                                <li><a href="https://isocpp.org/" target="_blank" rel="noopener" title="C++"><img src="https://skillicons.dev/icons?i=cpp" alt="C++" width="40" height="40" loading="lazy"></a></li>
+                                <li><a href="https://developer.mozilla.org/en-US/docs/Web/CSS" target="_blank" rel="noopener" title="CSS"><img src="https://skillicons.dev/icons?i=css" alt="CSS" width="40" height="40" loading="lazy"></a></li>
+                                <li><a href="https://developer.mozilla.org/en-US/docs/Web/HTML" target="_blank" rel="noopener" title="HTML"><img src="https://skillicons.dev/icons?i=html" alt="HTML" width="40" height="40" loading="lazy"></a></li>
+                                <li><a href="https://www.adobe.com/products/illustrator.html" target="_blank" rel="noopener" title="Adobe Illustrator"><img src="https://skillicons.dev/icons?i=ai" alt="Adobe Illustrator" width="40" height="40" loading="lazy"></a></li>
+                                <li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript" target="_blank" rel="noopener" title="JavaScript"><img src="https://skillicons.dev/icons?i=js" alt="JavaScript" width="40" height="40" loading="lazy"></a></li>
+                                <li><a href="https://www.adobe.com/products/photoshop.html" target="_blank" rel="noopener" title="Adobe Photoshop"><img src="https://skillicons.dev/icons?i=ps" alt="Adobe Photoshop" width="40" height="40" loading="lazy"></a></li>
+                                <li><a href="https://www.python.org/" target="_blank" rel="noopener" title="Python"><img src="https://skillicons.dev/icons?i=py" alt="Python" width="40" height="40" loading="lazy"></a></li>
+                                <li><a href="https://www.rust-lang.org/" target="_blank" rel="noopener" title="Rust"><img src="https://skillicons.dev/icons?i=rust" alt="Rust" width="40" height="40" loading="lazy"></a></li>
+                                <li><a href="https://www.swift.org/" target="_blank" rel="noopener" title="Swift"><img src="https://skillicons.dev/icons?i=swift" alt="Swift" width="40" height="40" loading="lazy"></a></li>
+                                <li><a href="https://www.typescriptlang.org/" target="_blank" rel="noopener" title="TypeScript"><img src="https://skillicons.dev/icons?i=ts" alt="TypeScript" width="40" height="40" loading="lazy"></a></li>
+                            </ul>
+                            <p class="readme-streak"><img src="https://github-readme-streak-stats.herokuapp.com/?user=KryptonGao" alt="Gao Chenkai's GitHub contribution streak" loading="lazy"></p>
+                        </div>
+                    </section>
 
-                <section class="readme-section" aria-labelledby="tools-title">
-                    <h2 class="readme-section-title" id="tools-title">Languages and Tools</h2>
-                    <ul class="readme-tools" aria-label="Languages and tools">
-                        <li><a href="https://isocpp.org/" target="_blank" rel="noopener" title="C++"><img src="https://skillicons.dev/icons?i=cpp" alt="C++" width="40" height="40" loading="lazy"></a></li>
-                        <li><a href="https://developer.mozilla.org/en-US/docs/Web/CSS" target="_blank" rel="noopener" title="CSS"><img src="https://skillicons.dev/icons?i=css" alt="CSS" width="40" height="40" loading="lazy"></a></li>
-                        <li><a href="https://developer.mozilla.org/en-US/docs/Web/HTML" target="_blank" rel="noopener" title="HTML"><img src="https://skillicons.dev/icons?i=html" alt="HTML" width="40" height="40" loading="lazy"></a></li>
-                        <li><a href="https://www.adobe.com/products/illustrator.html" target="_blank" rel="noopener" title="Adobe Illustrator"><img src="https://skillicons.dev/icons?i=ai" alt="Adobe Illustrator" width="40" height="40" loading="lazy"></a></li>
-                        <li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript" target="_blank" rel="noopener" title="JavaScript"><img src="https://skillicons.dev/icons?i=js" alt="JavaScript" width="40" height="40" loading="lazy"></a></li>
-                        <li><a href="https://www.adobe.com/products/photoshop.html" target="_blank" rel="noopener" title="Adobe Photoshop"><img src="https://skillicons.dev/icons?i=ps" alt="Adobe Photoshop" width="40" height="40" loading="lazy"></a></li>
-                        <li><a href="https://www.python.org/" target="_blank" rel="noopener" title="Python"><img src="https://skillicons.dev/icons?i=py" alt="Python" width="40" height="40" loading="lazy"></a></li>
-                        <li><a href="https://www.rust-lang.org/" target="_blank" rel="noopener" title="Rust"><img src="https://skillicons.dev/icons?i=rust" alt="Rust" width="40" height="40" loading="lazy"></a></li>
-                        <li><a href="https://www.swift.org/" target="_blank" rel="noopener" title="Swift"><img src="https://skillicons.dev/icons?i=swift" alt="Swift" width="40" height="40" loading="lazy"></a></li>
-                        <li><a href="https://www.typescriptlang.org/" target="_blank" rel="noopener" title="TypeScript"><img src="https://skillicons.dev/icons?i=ts" alt="TypeScript" width="40" height="40" loading="lazy"></a></li>
-                    </ul>
-                    <p class="readme-streak"><img src="https://github-readme-streak-stats.herokuapp.com/?user=Gao-Chenkai" alt="Gao Chenkai's GitHub contribution streak" loading="lazy"></p>
-                </section>
-
-                <section class="readme-section" aria-labelledby="lets-connect-title">
-                    <h2 class="readme-section-title" id="lets-connect-title">Let’s connect</h2>
-                    <p class="readme-copy">If you enjoy thoughtful apps, learning in public, or turning a blank page into a working prototype, I’d be happy to hear from you.</p>
-                    <p class="readme-link-line">
-                        <a href="https://github.com/Gao-Chenkai" target="_blank" rel="noopener">GitHub</a><span aria-hidden="true">·</span>
-                        <a href="https://gao-chenkai.github.io/" target="_blank" rel="noopener">Portfolio</a><span aria-hidden="true">·</span>
-                        <a href="https://x.com/KryptonGao" target="_blank" rel="noopener">X / @KryptonGao</a><span aria-hidden="true">·</span>
-                        <a href="https://instagram.com/kryptongao5525" target="_blank" rel="noopener">Instagram / @kryptongao5525</a><span aria-hidden="true">·</span>
-                        <a href="mailto:DevChenkai@outlook.com">DevChenkai@outlook.com</a>
-                    </p>
-                </section>
+                    <section class="about-block" aria-labelledby="connect-title">
+                        <span class="about-block-num">05</span>
+                        <div>
+                            <h2 id="connect-title">Let’s connect</h2>
+                            <p class="readme-copy">If you enjoy thoughtful apps, learning in public, or turning a blank page into a working prototype, I’d be happy to hear from you.</p>
+                            <ul class="readme-social-links">
+                                <li><a href="https://github.com/KryptonGao" target="_blank" rel="noopener"><img src="https://raw.githubusercontent.com/rahuldkjain/github-profile-readme-generator/master/src/images/icons/Social/github.svg" alt="KryptonGao on GitHub" width="40" height="30" loading="lazy"></a></li>
+                                <li><a href="https://instagram.com/kryptongao5525" target="_blank" rel="noopener"><img src="https://raw.githubusercontent.com/rahuldkjain/github-profile-readme-generator/master/src/images/icons/Social/instagram.svg" alt="kryptongao5525 on Instagram" width="40" height="30" loading="lazy"></a></li>
+                                <li><a href="https://x.com/KryptonGao" target="_blank" rel="noopener"><img src="https://raw.githubusercontent.com/rahuldkjain/github-profile-readme-generator/master/src/images/icons/Social/twitter.svg" alt="KryptonGao on X" width="40" height="30" loading="lazy"></a></li>
+                            </ul>
+                            <p class="readme-link-line">
+                                <a href="https://github.com/KryptonGao" target="_blank" rel="noopener">GitHub</a><span aria-hidden="true">·</span>
+                                <a href="https://gao-chenkai.github.io/" target="_blank" rel="noopener">Portfolio</a><span aria-hidden="true">·</span>
+                                <a href="https://x.com/KryptonGao" target="_blank" rel="noopener">X / @KryptonGao</a><span aria-hidden="true">·</span>
+                                <a href="https://instagram.com/kryptongao5525" target="_blank" rel="noopener">Instagram / @kryptongao5525</a><span aria-hidden="true">·</span>
+                                <a href="mailto:DevChenkai@outlook.com">DevChenkai@outlook.com</a>
+                            </p>
+                        </div>
+                    </section>
+                </div>
             </article>
         </main>
     </div>
 
     <footer class="footer">
-        <p>&copy; 2026 Gao Chenkai · Last updated: August 2026</p>
-        <p>Thanks for visiting</p>
+        <div class="footer-inner">
+            <div class="footer-brand">
+                <a class="wordmark" href="index.html">Gao<b>.</b>Chenkai</a>
+                <p>Making ideas tangible — one small, careful, working thing at a time.</p>
+            </div>
+            <ul class="footer-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="news.html">News</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="https://github.com/KryptonGao" target="_blank" rel="noopener">GitHub ↗</a></li>
+                <li><a href="https://x.com/KryptonGao" target="_blank" rel="noopener">X ↗</a></li>
+                <li><a href="mailto:DevChenkai@outlook.com">Email</a></li>
+            </ul>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Gao Chenkai · Built in public</p>
+            <p>Last updated · August 2026</p>
+        </div>
     </footer>
 
-    <script src="js/animations.js?v=20260812" defer></script>
+    <script src="js/animations.js?v=20260824" defer></script>
 </body>
 </html>
