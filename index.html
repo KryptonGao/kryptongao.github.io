@@ -3,506 +3,74 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gao Chenkai | Personal profile</title>
-    <meta name="description" content="Gao Chenkai — iOS developer, builder, and curious learner who enjoys making ideas tangible.">
+    <title>Gao Chenkai — iOS developer & builder making ideas tangible</title>
+    <meta name="description" content="Gao Chenkai (Krypton) — iOS developer and builder making learning, reflection, and planning tools for Apple platforms. Currently building StudyPulse.">
+    <meta name="author" content="Gao Chenkai">
+    <meta name="theme-color" content="#FAFAF7" media="(prefers-color-scheme: light)">
+    <meta name="theme-color" content="#0E1014" media="(prefers-color-scheme: dark)">
+
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Gao Chenkai — iOS developer & builder">
+    <meta property="og:description" content="Making ideas tangible. iOS developer building learning, reflection, and planning tools for Apple platforms.">
+    <meta property="og:image" content="images/profile-hero.svg">
+    <meta property="og:url" content="https://gao-chenkai.github.io/">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Gao Chenkai — iOS developer & builder">
+    <meta name="twitter:description" content="Making ideas tangible. iOS developer building learning, reflection, and planning tools.">
+
     <link rel="icon" href="images/profile.jpg" type="image/jpeg">
-    <link rel="stylesheet" href="profile.css?v=20260812">
-    <style>
-        *, *::before, *::after { box-sizing: border-box; }
-
-        :root {
-            --body-bg: #fafbfc;
-            --masthead-bg: rgba(255, 255, 255, 0.95);
-            --footer-bg: linear-gradient(180deg, #f1f5f9 0%, #e2e8f0 100%);
-            --surface: #ffffff;
-            --news-bg: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
-            --text: #1f2937;
-            --body-text: #374151;
-            --muted: #6b7280;
-            --faint: #9ca3af;
-            --link: #1d4ed8;
-            --link-hover: #1e40af;
-            --border: #e5e7eb;
-            --border-soft: #eef0f3;
-            --avatar-bg: #ffffff;
-            --shadow-sm: 0 1px 2px rgb(0 0 0 / 0.05);
-            --radius: 8px;
-        }
-
-        html[data-theme="dark"] {
-            --body-bg: #111827;
-            --masthead-bg: rgba(17, 24, 39, 0.96);
-            --footer-bg: linear-gradient(180deg, #1f2937 0%, #111827 100%);
-            --surface: #1f2937;
-            --news-bg: linear-gradient(135deg, #1f2937 0%, #243244 100%);
-            --text: #f3f4f6;
-            --body-text: #d1d5db;
-            --muted: #9ca3af;
-            --faint: #6b7280;
-            --link: #93c5fd;
-            --link-hover: #bfdbfe;
-            --border: #374151;
-            --border-soft: #293548;
-            --avatar-bg: #1f2937;
-            --shadow-sm: 0 1px 2px rgb(0 0 0 / 0.2);
-        }
-
-        html { scroll-behavior: smooth; }
-
-        body {
-            min-width: 320px;
-            min-height: 100vh;
-            margin: 0;
-            background: var(--body-bg);
-            color: var(--text);
-            font-family: "IBM Plex Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-            font-size: 16px;
-            line-height: 1.65;
-            letter-spacing: -0.01em;
-            display: flex;
-            flex-direction: column;
-            -webkit-font-smoothing: antialiased;
-            transition: background-color 0.2s ease, color 0.2s ease;
-        }
-
-        a {
-            color: var(--link);
-            text-decoration-thickness: 1px;
-            text-underline-offset: 3px;
-        }
-
-        a:hover { color: var(--link-hover); }
-
-        button { font: inherit; }
-
-        .icon-sprite {
-            position: absolute;
-            width: 0;
-            height: 0;
-            overflow: hidden;
-        }
-
-        .icon {
-            width: 1em;
-            height: 1em;
-            flex: 0 0 auto;
-            fill: currentColor;
-        }
-
-        .masthead {
-            border-bottom: 1px solid var(--border);
-            background: var(--masthead-bg);
-            position: sticky;
-            top: 0;
-            z-index: 10;
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            flex: 0 0 auto;
-        }
-
-        .masthead-inner,
-        .page-shell {
-            width: min(calc(100% - 32px), 1216px);
-            margin: 0 auto;
-        }
-
-        .site-nav {
-            min-height: 56px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-        }
-
-        .nav-links {
-            display: flex;
-            align-items: stretch;
-            min-height: 56px;
-            margin: 0;
-            padding: 0;
-            list-style: none;
-        }
-
-        .nav-links li + li { border-left: 1px solid var(--border); }
-
-        .nav-links a {
-            position: relative;
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            min-height: 56px;
-            padding: 0 14px;
-            color: var(--muted);
-            font-size: 16px;
-            text-decoration: none;
-            transition: color 0.2s ease;
-        }
-
-        .nav-links a:hover,
-        .nav-links a.is-active { color: var(--text); }
-
-        .nav-links a.is-active { font-weight: 600; }
-
-        .nav-links a::after {
-            position: absolute;
-            right: 14px;
-            bottom: 10px;
-            left: 14px;
-            height: 2px;
-            background: #2563eb;
-            content: "";
-            opacity: 0;
-            transform: scaleX(0);
-            transform-origin: center;
-            transition: transform 0.28s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.2s ease;
-        }
-
-        .nav-links a:hover::after,
-        .nav-links a.is-active::after {
-            opacity: 1;
-            transform: scaleX(1);
-        }
-
-        .nav-links .icon { width: 15px; height: 15px; color: var(--faint); }
-
-        .control-buttons { display: flex; align-items: center; gap: 8px; }
-
-        .control-btn,
-        .nav-toggle {
-            display: inline-flex;
-            width: 38px;
-            height: 38px;
-            align-items: center;
-            justify-content: center;
-            border: 1px solid var(--border);
-            border-radius: var(--radius);
-            background: var(--surface);
-            color: var(--muted);
-            cursor: pointer;
-            transition: color 0.2s ease, border-color 0.2s ease, background-color 0.2s ease;
-        }
-
-        .control-btn:hover,
-        .nav-toggle:hover { border-color: #9ca3af; color: var(--text); }
-
-        .nav-toggle { display: none; }
-
-        .page-shell {
-            display: grid;
-            grid-template-columns: 260px minmax(0, 900px);
-            gap: 56px;
-            padding-top: 48px;
-            padding-bottom: 24px;
-            flex: 1 0 auto;
-        }
-
-        .sidebar { min-width: 0; }
-
-        .avatar {
-            display: block;
-            width: 200px;
-            height: 200px;
-            margin: 0 0 14px;
-            border: 2px solid var(--border);
-            border-radius: 50%;
-            background: var(--avatar-bg);
-            object-fit: cover;
-            filter: none;
-        }
-
-        .profile-name {
-            margin: 0;
-            color: var(--text);
-            font-size: 1.38rem;
-            font-weight: 700;
-            line-height: 1.25;
-        }
-
-        .profile-role {
-            margin: 5px 0 16px;
-            color: var(--muted);
-            font-size: 0.94rem;
-        }
-
-        .profile-links {
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-            margin: 0;
-            padding: 0 0 20px;
-            border-bottom: 1px dashed var(--border);
-            list-style: none;
-        }
-
-        .profile-links li,
-        .profile-links a {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            color: var(--body-text);
-            font-size: 0.96rem;
-            line-height: 1.4;
-        }
-
-        .profile-links a { text-decoration: none; }
-        .profile-links a:hover { color: var(--link); }
-        .profile-links .icon { width: 17px; height: 17px; color: var(--muted); }
-
-        .page-content { min-width: 0; }
-
-        .intro {
-            margin: 0;
-            color: var(--body-text);
-            font-family: Lora, Georgia, "Times New Roman", "Songti SC", serif;
-            font-size: 1.02rem;
-            line-height: 1.75;
-            letter-spacing: 0.005em;
-        }
-
-        .intro + .intro { margin-top: 14px; }
-
-        .intro strong { color: var(--text); font-weight: 600; }
-        .intro em { color: var(--text); }
-
-        .closing { margin-top: 18px !important; }
-
-        .content-section { scroll-margin-top: 80px; }
-
-        .home-github-dashboard { margin-top: 36px; }
-
-        .section-title {
-            margin: 30px 0 13px;
-            color: var(--muted);
-            font-size: 1.15rem;
-            font-weight: 500;
-            line-height: 1.4;
-        }
-
-        .news-list {
-            margin: 0;
-            padding: 5px 18px 5px 42px;
-            border: 1px solid var(--border);
-            border-radius: var(--radius);
-            background: var(--news-bg);
-            box-shadow: var(--shadow-sm);
-            list-style: none;
-        }
-
-        .news-list li {
-            position: relative;
-            display: grid;
-            grid-template-columns: 68px minmax(0, 1fr);
-            gap: 0;
-            padding: 8px 0;
-            color: var(--body-text);
-            font-family: Lora, Georgia, "Times New Roman", "Songti SC", serif;
-            font-size: 0.95rem;
-            line-height: 1.65;
-        }
-
-        .news-list li + li { border-top: 1px dashed var(--border); }
-
-        .news-list li::before {
-            position: absolute;
-            top: 0.82em;
-            left: -22px;
-            width: 5px;
-            height: 5px;
-            border-radius: 50%;
-            background: var(--muted);
-            content: "";
-        }
-
-        .news-date {
-            color: var(--muted);
-            font-family: "IBM Plex Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-            font-size: 0.86rem;
-            letter-spacing: 0;
-            white-space: nowrap;
-        }
-
-        .news-list a { font-weight: 500; }
-
-        .footer {
-            margin-top: auto;
-            flex: 0 0 auto;
-            padding: 20px 16px;
-            border-top: 1px solid var(--border);
-            background: var(--footer-bg);
-            color: var(--muted);
-            text-align: center;
-            font-size: 0.88rem;
-        }
-
-        .footer p { margin: 0; }
-        .footer p + p { margin-top: 4px; color: var(--faint); }
-
-        @media (max-width: 900px) {
-            .page-shell {
-                grid-template-columns: 200px minmax(0, 1fr);
-                gap: 32px;
-            }
-
-            .avatar { width: 160px; height: 160px; }
-        }
-
-        @media (max-width: 680px) {
-            .masthead-inner,
-            .page-shell { width: min(calc(100% - 28px), 560px); }
-
-            .site-nav { position: relative; }
-
-            .nav-toggle { display: inline-flex; }
-
-            .nav-links {
-                position: absolute;
-                top: 56px;
-                right: 0;
-                left: 0;
-                display: none;
-                min-height: 0;
-                flex-direction: column;
-                border: 1px solid var(--border);
-                border-top: 0;
-                background: var(--masthead-bg);
-                box-shadow: var(--shadow-sm);
-            }
-
-            .nav-links.is-open { display: flex; }
-            .nav-links li + li { border-top: 1px solid var(--border); border-left: 0; }
-            .nav-links a { width: 100%; min-height: 45px; padding: 0 16px; }
-            .nav-links a.is-active::after { right: 16px; bottom: 0; left: 16px; }
-
-            .control-buttons { margin-left: auto; margin-right: 8px; }
-
-            .page-shell {
-                display: block;
-                padding-top: 32px;
-            }
-
-            .sidebar {
-                display: grid;
-                grid-template-columns: 112px minmax(0, 1fr);
-                gap: 18px;
-                align-items: center;
-                margin-bottom: 34px;
-            }
-
-            .avatar { width: 112px; height: 112px; margin: 0; }
-            .profile-role { margin-bottom: 11px; }
-            .profile-links { gap: 7px; padding-bottom: 0; border-bottom: 0; }
-            .profile-links li, .profile-links a { font-size: 0.88rem; }
-
-            .intro { font-size: 1rem; }
-            .news-list { padding-left: 35px; }
-            .news-list li { grid-template-columns: 58px minmax(0, 1fr); font-size: 0.92rem; }
-        }
-
-        @media (max-width: 430px) {
-            .sidebar { grid-template-columns: 96px minmax(0, 1fr); gap: 14px; }
-            .avatar { width: 96px; height: 96px; }
-            .profile-name { font-size: 1.2rem; }
-            .news-list li { grid-template-columns: 1fr; gap: 2px; }
-            .news-date { font-size: 0.8rem; }
-        }
-
-        @keyframes page-fade-in {
-            from { opacity: 0; transform: translateY(12px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        @keyframes masthead-enter {
-            from { opacity: 0; transform: translateY(-10px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        @keyframes sidebar-enter {
-            from { opacity: 0; transform: translateX(-18px); }
-            to { opacity: 1; transform: translateX(0); }
-        }
-
-        @keyframes page-fade-out {
-            from { opacity: 1; transform: translateY(0); }
-            to { opacity: 0; transform: translateY(-8px); }
-        }
-
-        body { animation: page-fade-in 0.39s ease both; }
-        .masthead { animation: masthead-enter 0.31s ease both; }
-        .page-shell { animation: page-fade-in 0.46s 0.03s ease both; }
-        .sidebar { animation: sidebar-enter 0.43s 0.07s ease both; }
-        .page-content { animation: page-fade-in 0.43s 0.1s ease both; }
-        .news-list, .contact-list { animation: page-fade-in 0.39s 0.19s ease both; }
-        .footer { animation: page-fade-in 0.39s 0.21s ease both; }
-
-        body.page-leaving { pointer-events: none; }
-        body.page-leaving .masthead,
-        body.page-leaving .page-shell,
-        body.page-leaving .footer { animation: page-fade-out 0.14s ease both; }
-
-        @media (prefers-reduced-motion: reduce) {
-            *, *::before, *::after {
-                scroll-behavior: auto !important;
-                animation: none !important;
-                transition-duration: 0.01ms !important;
-            }
-        }
-    </style>
+    <link rel="canonical" href="https://gao-chenkai.github.io/">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="profile.css?v=20260824">
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Gao Chenkai",
+      "alternateName": "Krypton",
+      "url": "https://gao-chenkai.github.io/",
+      "image": "https://gao-chenkai.github.io/images/profile.jpg",
+      "jobTitle": "iOS developer",
+      "description": "iOS developer, builder, and curious learner who enjoys making ideas tangible.",
+      "sameAs": [
+        "https://github.com/KryptonGao",
+        "https://x.com/KryptonGao",
+        "https://instagram.com/kryptongao5525"
+      ],
+      "email": "mailto:DevChenkai@outlook.com"
+    }
+    </script>
 </head>
 <body>
     <svg class="icon-sprite" aria-hidden="true" focusable="false">
-        <symbol id="icon-home" viewBox="0 0 24 24">
-            <path d="M3 10.8 12 3l9 7.8v8.7a1.5 1.5 0 0 1-1.5 1.5h-5v-6h-5v6h-5A1.5 1.5 0 0 1 3 19.5v-8.7Z"/>
-        </symbol>
-        <symbol id="icon-user" viewBox="0 0 24 24">
-            <path d="M12 12a4.5 4.5 0 1 0 0-9 4.5 4.5 0 0 0 0 9Zm0 2c-4.4 0-8 2.4-8 5.4V21h16v-1.6c0-3-3.6-5.4-8-5.4Z"/>
-        </symbol>
-        <symbol id="icon-mail" viewBox="0 0 24 24">
-            <path d="M3 5h18a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2Zm9 7.2L21 7H3l9 5.2ZM3 9.3V17h18V9.3l-9 5.2-9-5.2Z"/>
-        </symbol>
-        <symbol id="icon-github" viewBox="0 0 24 24">
-            <path d="M12 2a10 10 0 0 0-3.2 19.5c.5.1.7-.2.7-.5v-1.8c-2.8.6-3.4-1.2-3.4-1.2-.5-1.2-1.1-1.5-1.1-1.5-.9-.6.1-.6.1-.6 1 0 1.5 1 1.5 1 .9 1.5 2.3 1.1 2.9.8.1-.6.4-1.1.7-1.3-2.2-.3-4.5-1.1-4.5-4.9 0-1.1.4-2 1-2.7-.1-.3-.4-1.3.1-2.7 0 0 .8-.3 2.8 1a9.7 9.7 0 0 1 5.1 0c2-1.3 2.8-1 2.8-1 .5 1.4.2 2.4.1 2.7.6.7 1 1.6 1 2.7 0 3.8-2.3 4.6-4.5 4.9.4.3.7.9.7 1.8V21c0 .3.2.6.7.5A10 10 0 0 0 12 2Z"/>
-        </symbol>
-        <symbol id="icon-news" viewBox="0 0 24 24">
-            <path d="M5 3h12a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a3 3 0 0 1-3-3V6a3 3 0 0 1 3-3Zm0 2a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h12V5H5Zm3 3h6v2H8V8Zm0 4h6v2H8v-2Zm0 4h4v2H8v-2ZM21 7h1v12a2 2 0 0 1-2 2h-1v-2h1a0 0 0 0 0 0 0V7h1Z"/>
-        </symbol>
-        <symbol id="icon-sun" viewBox="0 0 24 24">
-            <path d="M12 7a5 5 0 1 0 0 10 5 5 0 0 0 0-10Zm0-5h2v3h-2V2Zm0 17h2v3h-2v-3ZM2 11h3v2H2v-2Zm17 0h3v2h-3v-2ZM4.2 4.2l1.4-1.4 2.1 2.1-1.4 1.4-2.1-2.1Zm12.1 12.1 1.4-1.4 2.1 2.1-1.4 1.4-2.1-2.1ZM4.2 19.8l2.1-2.1 1.4 1.4-2.1 2.1-1.4-1.4Zm12.1-14.9 2.1-2.1 1.4 1.4-2.1 2.1-1.4-1.4Z"/>
-        </symbol>
-        <symbol id="icon-moon" viewBox="0 0 24 24">
-            <path d="M20.4 15.2A8.7 8.7 0 0 1 8.8 3.6 9 9 0 1 0 20.4 15.2Z"/>
-        </symbol>
-        <symbol id="icon-menu" viewBox="0 0 24 24">
-            <path d="M3 5h18v2H3V5Zm0 6h18v2H3v-2Zm0 6h18v2H3v-2Z"/>
-        </symbol>
+        <symbol id="icon-home" viewBox="0 0 24 24"><path d="M3 10.8 12 3l9 7.8v8.7a1.5 1.5 0 0 1-1.5 1.5h-5v-6h-5v6h-5A1.5 1.5 0 0 1 3 19.5v-8.7Z"/></symbol>
+        <symbol id="icon-user" viewBox="0 0 24 24"><path d="M12 12a4.5 4.5 0 1 0 0-9 4.5 4.5 0 0 0 0 9Zm0 2c-4.4 0-8 2.4-8 5.4V21h16v-1.6c0-3-3.6-5.4-8-5.4Z"/></symbol>
+        <symbol id="icon-mail" viewBox="0 0 24 24"><path d="M3 5h18a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2Zm9 7.2L21 7H3l9 5.2ZM3 9.3V17h18V9.3l-9 5.2-9-5.2Z"/></symbol>
+        <symbol id="icon-github" viewBox="0 0 24 24"><path d="M12 2a10 10 0 0 0-3.2 19.5c.5.1.7-.2.7-.5v-1.8c-2.8.6-3.4-1.2-3.4-1.2-.5-1.2-1.1-1.5-1.1-1.5-.9-.6.1-.6.1-.6 1 0 1.5 1 1.5 1 .9 1.5 2.3 1.1 2.9.8.1-.6.4-1.1.7-1.3-2.2-.3-4.5-1.1-4.5-4.9 0-1.1.4-2 1-2.7-.1-.3-.4-1.3.1-2.7 0 0 .8-.3 2.8 1a9.7 9.7 0 0 1 5.1 0c2-1.3 2.8-1 2.8-1 .5 1.4.2 2.4.1 2.7.6.7 1 1.6 1 2.7 0 3.8-2.3 4.6-4.5 4.9.4.3.7.9.7 1.8V21c0 .3.2.6.7.5A10 10 0 0 0 12 2Z"/></symbol>
+        <symbol id="icon-news" viewBox="0 0 24 24"><path d="M5 3h12a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a3 3 0 0 1-3-3V6a3 3 0 0 1 3-3Zm0 2a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h12V5H5Zm3 3h6v2H8V8Zm0 4h6v2H8v-2Zm0 4h4v2H8v-2ZM21 7h1v12a2 2 0 0 1-2 2h-1v-2h1a0 0 0 0 0 0V7h1Z"/></symbol>
+        <symbol id="icon-sun" viewBox="0 0 24 24"><path d="M12 7a5 5 0 1 0 0 10 5 5 0 0 0 0-10Zm0-5h2v3h-2V2Zm0 17h2v3h-2v-3ZM2 11h3v2H2v-2Zm17 0h3v2h-3v-2ZM4.2 4.2l1.4-1.4 2.1 2.1-1.4 1.4-2.1-2.1Zm12.1 12.1 1.4-1.4 2.1 2.1-1.4 1.4-2.1-2.1ZM4.2 19.8l2.1-2.1 1.4 1.4-2.1 2.1-1.4-1.4Zm12.1-14.9 2.1-2.1 1.4 1.4-2.1 2.1-1.4-1.4Z"/></symbol>
+        <symbol id="icon-moon" viewBox="0 0 24 24"><path d="M20.4 15.2A8.7 8.7 0 0 1 8.8 3.6 9 9 0 1 0 20.4 15.2Z"/></symbol>
+        <symbol id="icon-menu" viewBox="0 0 24 24"><path d="M3 5h18v2H3V5Zm0 6h18v2H3v-2Zm0 6h18v2H3v-2Z"/></symbol>
+        <symbol id="icon-arrow" viewBox="0 0 24 24"><path d="M7 17 17 7M17 7H9M17 7v8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
     </svg>
+
+    <div class="scroll-progress" aria-hidden="true"></div>
 
     <header class="masthead">
         <div class="masthead-inner">
             <nav class="site-nav" aria-label="Primary navigation">
+                <a class="wordmark" href="index.html" aria-label="Gao Chenkai — home">
+                    Gao<b>.</b>Chenkai <span>/ Krypton</span>
+                </a>
                 <ul class="nav-links" id="primary-nav">
-                    <li>
-                        <a class="is-active" href="index.html">
-                            <svg class="icon" aria-hidden="true"><use href="#icon-home"></use></svg>
-                            <span>Home</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="about.html">
-                            <svg class="icon" aria-hidden="true"><use href="#icon-user"></use></svg>
-                            <span>About</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="news.html">
-                            <svg class="icon" aria-hidden="true"><use href="#icon-news"></use></svg>
-                            <span>News</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="contact.html">
-                            <svg class="icon" aria-hidden="true"><use href="#icon-mail"></use></svg>
-                            <span>Contact</span>
-                        </a>
-                    </li>
+                    <li><a class="is-active" href="index.html"><svg class="icon" aria-hidden="true"><use href="#icon-home"></use></svg><span>Home</span></a></li>
+                    <li><a href="about.html"><svg class="icon" aria-hidden="true"><use href="#icon-user"></use></svg><span>About</span></a></li>
+                    <li><a href="news.html"><svg class="icon" aria-hidden="true"><use href="#icon-news"></use></svg><span>News</span></a></li>
+                    <li><a href="contact.html"><svg class="icon" aria-hidden="true"><use href="#icon-mail"></use></svg><span>Contact</span></a></li>
                 </ul>
                 <div class="control-buttons">
                     <button class="control-btn" id="theme-toggle" type="button" aria-label="Toggle theme" aria-pressed="false">
@@ -516,97 +84,148 @@
         </div>
     </header>
 
-    <div class="page-shell" id="home">
-        <aside class="sidebar" aria-label="Profile">
-            <img class="avatar" src="images/profile.jpg" alt="Gao Chenkai">
-            <div class="profile-content">
-                <h1 class="profile-name">Gao Chenkai</h1>
-                <p class="profile-role">iOS developer · builder · curious learner</p>
-                <ul class="profile-links">
-                    <li>
-                        <svg class="icon" aria-hidden="true"><use href="#icon-user"></use></svg>
-                        <span>Making ideas tangible</span>
-                    </li>
-                    <li>
-                        <a href="mailto:DevChenkai@outlook.com">
-                            <svg class="icon" aria-hidden="true"><use href="#icon-mail"></use></svg>
-                            <span>Email</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="https://github.com/Gao-Chenkai" target="_blank" rel="noopener">
-                            <svg class="icon" aria-hidden="true"><use href="#icon-github"></use></svg>
-                            <span>GitHub</span>
-                        </a>
-                    </li>
-                </ul>
+    <main id="home">
+        <!-- ============================ HERO ============================ -->
+        <section class="hero" aria-labelledby="hero-title">
+            <div class="hero-bg" aria-hidden="true">
+                <div class="hero-glow" data-parallax="0.12"></div>
+                <div class="hero-grid"></div>
             </div>
-        </aside>
 
-        <main class="page-content">
-            <article id="about" class="content-section">
-                <p class="intro">Hi, I’m <strong>Gao Chenkai</strong> — you may also know me as <strong>Krypton</strong>. I’m an iOS developer, a curious builder, and someone who enjoys taking a complicated idea and finding its smallest useful shape.</p>
-                <p class="intro">I like making things that feel clear and human: starting from a rough thought, learning whatever the problem requires, and gradually turning it into something real. I’m especially drawn to apps that help people learn, plan, reflect, or make better use of their time.</p>
-            </article>
-
-            <section class="github-dashboard home-github-dashboard" aria-labelledby="home-github-title">
-                <div class="github-dashboard-header">
+            <div class="hero-card" aria-hidden="true">
+                <div class="hero-card-head">
+                    <img class="hero-card-avatar" src="images/profile.jpg" alt="">
                     <div>
-                        <p class="github-kicker">GITHUB CONTRIBUTIONS</p>
-                        <h2 class="internal-section-title" id="home-github-title">GitHub contributions</h2>
+                        <div class="hero-card-name">Gao Chenkai</div>
+                        <div class="hero-card-role">iOS developer · builder</div>
                     </div>
-                    <a class="github-profile-link" href="https://github.com/Gao-Chenkai" target="_blank" rel="noopener">View on GitHub <span aria-hidden="true">↗</span></a>
+                </div>
+                <div class="hero-card-notes">
+                    <div class="hero-card-note"><i></i><div><b>MAKE</b><span>turn a thought into a real thing</span></div></div>
+                    <div class="hero-card-note"><i></i><div><b>LEARN</b><span>stay curious, keep asking why</span></div></div>
+                    <div class="hero-card-note"><i></i><div><b>NOTICE</b><span>care about the small details</span></div></div>
+                </div>
+            </div>
+
+            <div class="hero-inner">
+                <div class="hero-top">
+                    <span class="eyebrow">Personal readme / 2026</span>
+                    <span class="hero-status">Building in public</span>
                 </div>
 
-                <div class="contribution-card" data-github-contribution-card>
-                    <div class="contribution-card-heading">
+                <h1 class="display hero-name" id="hero-title">Making ideas<br><em>tangible.</em></h1>
+                <p class="lead hero-line">I’m Gao Chenkai — an iOS developer who likes turning a complicated idea into its smallest useful shape.</p>
+                <p class="hero-sub">Currently shipping <strong>StudyPulse</strong>, a learning companion for iPhone and iPad, and extending it to the desktop and an optional AI layer. I care about apps that help people learn, plan, reflect, and make better use of their time.</p>
+
+                <div class="hero-actions btn-row" data-reveal>
+                    <a class="btn" href="#activity">View GitHub activity <svg class="icon arrow" aria-hidden="true"><use href="#icon-arrow"></use></svg></a>
+                    <a class="btn btn--ghost" href="https://github.com/KryptonGao" target="_blank" rel="noopener">View GitHub <svg class="icon arrow" aria-hidden="true"><use href="#icon-arrow"></use></svg></a>
+                </div>
+
+                <div class="hero-meta">
+                    <div class="hero-meta-item">
+                        <span class="eyebrow">Focus</span>
+                        <p>Apple platforms · learning tools · AI-assisted workflows</p>
+                    </div>
+                    <div class="hero-meta-item">
+                        <span class="eyebrow">Also learning</span>
+                        <p>Rust · TypeScript · desktop & service layers</p>
+                    </div>
+                    <div class="hero-meta-item">
+                        <span class="eyebrow">Based</span>
+                        <p>Open to collaboration on small products</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ====================== GITHUB ACTIVITY ======================= -->
+        <section class="section section--alt" id="activity" aria-labelledby="activity-title">
+            <div class="shell">
+                <div class="section-head" data-reveal>
+                    <span class="section-index">01 / Open source rhythm</span>
+                    <div>
+                        <h2 class="section-title" id="activity-title">A quiet record of what I ship.</h2>
+                        <p class="section-sub">Public contributions over the past year — the calendar below is a GraphQL snapshot, with recent activity auto-synced from the GitHub API.</p>
+                    </div>
+                </div>
+
+                <section class="github-dashboard" aria-labelledby="home-github-title" data-reveal>
+                    <div class="github-dashboard-header">
                         <div>
-                            <p class="contribution-total" data-contribution-total>Loading contribution stats…</p>
-                            <p class="contribution-caption">Past year · public contributions</p>
+                            <p class="github-kicker">GitHub contributions</p>
+                            <h3 class="internal-section-title" id="home-github-title">Contribution calendar</h3>
                         </div>
-                        <span class="contribution-updated" data-contribution-updated>GraphQL snapshot</span>
+                        <a class="github-profile-link" href="https://github.com/KryptonGao" target="_blank" rel="noopener">View on GitHub <span aria-hidden="true">↗</span></a>
                     </div>
 
-                    <div class="contribution-calendar-scroll">
-                        <div class="contribution-calendar">
-                            <div class="contribution-months" data-contribution-months aria-hidden="true"></div>
-                            <div class="contribution-calendar-body">
-                                <div class="contribution-weekdays" aria-hidden="true">
-                                    <span></span><span>Mon</span><span></span><span>Wed</span><span></span><span>Fri</span><span></span>
+                    <div class="contribution-card" data-github-contribution-card>
+                        <div class="contribution-card-heading">
+                            <div>
+                                <p class="contribution-total" data-contribution-total>Loading contribution stats…</p>
+                                <p class="contribution-caption">Past year · public contributions</p>
+                            </div>
+                            <span class="contribution-updated" data-contribution-updated>GraphQL snapshot</span>
+                        </div>
+
+                        <div class="contribution-calendar-scroll">
+                            <div class="contribution-calendar">
+                                <div class="contribution-months" data-contribution-months aria-hidden="true"></div>
+                                <div class="contribution-calendar-body">
+                                    <div class="contribution-weekdays" aria-hidden="true">
+                                        <span></span><span>Mon</span><span></span><span>Wed</span><span></span><span>Fri</span><span></span>
+                                    </div>
+                                    <div class="contribution-grid" data-contribution-grid role="grid" aria-label="GitHub contribution calendar for the past year"></div>
                                 </div>
-                                <div class="contribution-grid" data-contribution-grid role="grid" aria-label="GitHub contribution calendar for the past year"></div>
+                            </div>
+                        </div>
+
+                        <div class="contribution-legend-row">
+                            <a href="https://docs.github.com/en/account-and-profile/concepts/contributions" target="_blank" rel="noopener">Learn how we count contributions</a>
+                            <span class="contribution-legend"><span>Less</span><span class="legend-cells" aria-hidden="true"><i data-level="0"></i><i data-level="1"></i><i data-level="2"></i><i data-level="3"></i><i data-level="4"></i></span><span>More</span></span>
+                        </div>
+
+                        <div class="contribution-overview">
+                            <div class="overview-copy">
+                                <h2>Activity overview</h2>
+                                <p data-overview-copy>Preparing repository summary…</p>
+                            </div>
+                            <div class="overview-stat-grid" aria-label="Contribution category statistics">
+                                <div class="overview-stat"><strong data-contribution-stat="commits">—</strong><span>Commits</span></div>
+                                <div class="overview-stat"><strong data-contribution-stat="pullRequests">—</strong><span>Pull requests</span></div>
+                                <div class="overview-stat"><strong data-contribution-stat="issues">—</strong><span>Issues</span></div>
+                                <div class="overview-stat"><strong data-contribution-stat="reviews">—</strong><span>Reviews</span></div>
                             </div>
                         </div>
                     </div>
-
-                    <div class="contribution-legend-row">
-                        <a href="https://docs.github.com/en/account-and-profile/concepts/contributions" target="_blank" rel="noopener">Learn how we count contributions</a>
-                        <span class="contribution-legend"><span>Less</span><span class="legend-cells" aria-hidden="true"><i data-level="0"></i><i data-level="1"></i><i data-level="2"></i><i data-level="3"></i><i data-level="4"></i></span><span>More</span></span>
-                    </div>
-
-                    <div class="contribution-overview">
-                        <div class="overview-copy">
-                            <h2>Activity overview</h2>
-                            <p data-overview-copy>Preparing repository summary…</p>
-                        </div>
-                        <div class="overview-stat-grid" aria-label="Contribution category statistics">
-                            <div class="overview-stat"><strong data-contribution-stat="commits">—</strong><span>Commits</span></div>
-                            <div class="overview-stat"><strong data-contribution-stat="pullRequests">—</strong><span>Pull requests</span></div>
-                            <div class="overview-stat"><strong data-contribution-stat="issues">—</strong><span>Issues</span></div>
-                            <div class="overview-stat"><strong data-contribution-stat="reviews">—</strong><span>Reviews</span></div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-        </main>
-    </div>
+                </section>
+            </div>
+        </section>
+    </main>
 
     <footer class="footer">
-        <p>&copy; 2026 Gao Chenkai · Last updated: August 2026</p>
-        <p>Thanks for visiting</p>
+        <div class="footer-inner">
+            <div class="footer-brand">
+                <a class="wordmark" href="index.html">Gao<b>.</b>Chenkai</a>
+                <p>Making ideas tangible — one small, careful, working thing at a time.</p>
+            </div>
+            <ul class="footer-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="news.html">News</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="https://github.com/KryptonGao" target="_blank" rel="noopener">GitHub ↗</a></li>
+                <li><a href="https://x.com/KryptonGao" target="_blank" rel="noopener">X ↗</a></li>
+                <li><a href="mailto:DevChenkai@outlook.com">Email</a></li>
+            </ul>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Gao Chenkai · Built in public</p>
+            <p>Last updated · August 2026</p>
+        </div>
     </footer>
 
-    <script src="data/github-contributions.js?v=20260812" defer></script>
-    <script src="js/animations.js?v=20260812" defer></script>
+    <script src="data/github-contributions.js?v=20260824" defer></script>
+    <script src="js/animations.js?v=20260824" defer></script>
 </body>
 </html>
